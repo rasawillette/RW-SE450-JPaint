@@ -1,18 +1,22 @@
 package view.gui;
 
+import controller.ClickPoint;
+import view.EventName;
+import view.interfaces.IGuiWindow;
+
+import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
-import javax.swing.*;
-import javax.swing.border.*;
-
-import view.interfaces.IGuiWindow;
-import view.EventName;
-
-import java.awt.*;
 
 public class GuiWindow extends JFrame implements IGuiWindow {
+    Timer timer;
     private final int defaultWidth = 1250;
     private final int defaultHeight = 800;
     private final String defaultTitle = "JPaint";
@@ -30,6 +34,7 @@ public class GuiWindow extends JFrame implements IGuiWindow {
         JPanel window = createWindow();
         window.add(canvas, BorderLayout.CENTER);
 		validate();
+
     }
 
     @Override

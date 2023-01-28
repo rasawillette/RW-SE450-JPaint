@@ -1,5 +1,6 @@
 package model.interfaces;
 
+import controller.ClickPoint;
 import model.ShapeColor;
 import model.ShapeShadingType;
 import model.ShapeType;
@@ -25,4 +26,9 @@ public interface IApplicationState {
     ShapeShadingType getActiveShapeShadingType();
 
     MouseMode getActiveMouseMode();
+
+    void setStart(ClickPoint start);
+    void setStop(ClickPoint stop);
+    ClickPoint getStart();
+    ClickPoint getStop();
 }

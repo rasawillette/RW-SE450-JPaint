@@ -1,39 +1,65 @@
 package controller;
 
-import java.awt.event.MouseAdapter;
+import model.interfaces.IApplicationState;
+
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 // override 2 methods
-public class ClickHandler extends MouseAdapter {
+public class ClickHandler implements MouseListener {
 
-    Point startPoint;
-    Point endPoint;
+    public ClickPoint startClickPoint;
+    public ClickPoint endClickPoint;
+
+    //IGuiWindow guiWindow;
+    IApplicationState applicationState;
+
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
 
     // mouse pressed
-    private void MousePressed(MouseEvent e) {
-        startPoint = new Point();
-        startPoint.x = e.getX();
-        startPoint.y = e.getY();
-
+    @Override
+    public void mousePressed(MouseEvent e) {
+        startClickPoint = new ClickPoint();
+        startClickPoint.x = e.getX();
+        startClickPoint.y = e.getY();
+        applicationState.setStart(startClickPoint);
+        System.out.println("mouse pressed" + startClickPoint.x + " " + startClickPoint.y);
     }
 
     // mouse released
-    private void MouseReleased(MouseEvent e) {
+    @Override
+    public void mouseReleased(MouseEvent e) {
 
-        endPoint = new Point();
-        endPoint.x = e.getX();
-        endPoint.y = e.getY();
+        endClickPoint = new ClickPoint();
+        endClickPoint.x = e.getX();
+        endClickPoint.y = e.getY();
+        applicationState.setStop(endClickPoint);
 
         // calculate height
-        int height = endPoint.y-startPoint.y;
+        int height = endClickPoint.y- startClickPoint.y;
         // calculate width
-        int width = endPoint.x- startPoint.x;
+        int width = endClickPoint.x- startClickPoint.x;
+
+        System.out.println("mouse pressed" + height + " " + width);
+        e.getComponent().repaint();
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
 
     }
 
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+
+    public void addState(IApplicationState applicationState) {
+        this.applicationState = applicationState;
+    }
 }
 
-class Point {
-    public int x;
-    public int y;
-}

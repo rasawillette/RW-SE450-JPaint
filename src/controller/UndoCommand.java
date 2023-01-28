@@ -3,14 +3,14 @@ package controller;
 import model.UndoRedoInterface;
 
 public class UndoCommand implements UndoRedoInterface {
-
     @Override
+    public void redoCommand(){}
+
     public void execute() {
-        CommandHistory.undo();
+
+        //CommandHistory.undo();
     }
 
     @Override
-    public void undoCommand() {
-
-    }
+    public void undoCommand() {}
 }
