@@ -7,8 +7,7 @@ public class UndoCommand implements UndoRedoInterface {
     public void redoCommand(){}
 
     public void execute() {
-
-        //CommandHistory.undo();
+        CommandHistory.undo();
     }
 
     @Override

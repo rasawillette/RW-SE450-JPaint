@@ -4,6 +4,7 @@ import model.interfaces.IApplicationState;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.lang.Math;
 
 // override 2 methods
 public class ClickHandler implements MouseListener {
@@ -40,9 +41,9 @@ public class ClickHandler implements MouseListener {
         applicationState.setStop(endClickPoint);
 
         // calculate height
-        int height = endClickPoint.y- startClickPoint.y;
+        int height = Math.abs(endClickPoint.y- startClickPoint.y);
         // calculate width
-        int width = endClickPoint.x- startClickPoint.x;
+        int width = Math.abs(endClickPoint.x- startClickPoint.x);
 
         System.out.println("mouse pressed" + height + " " + width);
         e.getComponent().repaint();

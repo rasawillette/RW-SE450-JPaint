@@ -39,8 +39,6 @@ public class ApplicationState implements IApplicationState {
         System.out.println("application state " + activeShapeType );
 
         Component.activeShapeType = activeShapeType;
-
-        //uiModule
     }
 
     @Override
@@ -53,14 +51,12 @@ public class ApplicationState implements IApplicationState {
     public void setActiveSecondaryColor() {
         activeSecondaryColor = uiModule.getDialogResponse(dialogProvider.getChooseSecondaryColorDialog());
         Component.activeSecondaryColor = activeSecondaryColor;
-
     }
 
     @Override
     public void setActiveShadingType() {
         activeShapeShadingType = uiModule.getDialogResponse(dialogProvider.getChooseShadingTypeDialog());
         Component.activeShapeShadingType = activeShapeShadingType;
-
     }
 
     @Override
@@ -68,8 +64,6 @@ public class ApplicationState implements IApplicationState {
         System.out.println("set active start and end point mode");
         activeMouseMode = uiModule.getDialogResponse(dialogProvider.getChooseStartAndEndPointModeDialog());
         //Component.activeMouseMode = activeMouseMode;
-
-
         //uiModule.addEvent();
     }
 
