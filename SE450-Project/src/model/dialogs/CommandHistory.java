@@ -4,7 +4,7 @@ import controller.IUndoable;
 
 import java.util.Stack;
 
-class CommandHistory {
+public class CommandHistory {
 	private CommandHistory(){}
 
 	private static final Stack<IUndoable> undoStack = new Stack<>();
