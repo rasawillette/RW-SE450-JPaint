@@ -1,7 +1,6 @@
 package controller;
 
 import model.interfaces.IApplicationState;
-
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.lang.Math;
@@ -14,7 +13,6 @@ public class ClickHandler implements MouseListener {
 
     //IGuiWindow guiWindow;
     IApplicationState applicationState;
-
 
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -50,17 +48,13 @@ public class ClickHandler implements MouseListener {
     }
 
     @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
+    public void mouseEntered(MouseEvent e) {}
 
     @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
+    public void mouseExited(MouseEvent e) {}
 
     public void addState(IApplicationState applicationState) {
         this.applicationState = applicationState;
     }
-}
 
+}
