@@ -1,35 +1,60 @@
 package controller;
 
-import java.awt.event.MouseAdapter;
+import model.interfaces.IApplicationState;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.lang.Math;
 
 // override 2 methods
-public class ClickHandler extends MouseAdapter {
+public class ClickHandler implements MouseListener {
 
-    Point startPoint;
+    public ClickPoint startClickPoint;
+    public ClickPoint endClickPoint;
+
+    //IGuiWindow guiWindow;
+    IApplicationState applicationState;
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
 
     // mouse pressed
-    private void MousePressed(MouseEvent e) {
-        startPoint = new Point();
-        startPoint.x = e.getX();
-        startPoint.y = e.getY();
-
-        // create own point class with integers
-
+    @Override
+    public void mousePressed(MouseEvent e) {
+        startClickPoint = new ClickPoint();
+        startClickPoint.x = e.getX();
+        startClickPoint.y = e.getY();
+        applicationState.setStart(startClickPoint);
+        System.out.println("mouse pressed" + startClickPoint.x + " " + startClickPoint.y);
     }
 
     // mouse released
-    private void MouseReleased(MouseEvent e) {
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+        endClickPoint = new ClickPoint();
+        endClickPoint.x = e.getX();
+        endClickPoint.y = e.getY();
+        applicationState.setStop(endClickPoint);
 
         // calculate height
-
+        int height = Math.abs(endClickPoint.y- startClickPoint.y);
         // calculate width
+        int width = Math.abs(endClickPoint.x- startClickPoint.x);
 
+        System.out.println("mouse pressed" + height + " " + width);
+        e.getComponent().repaint();
     }
 
-}
+    @Override
+    public void mouseEntered(MouseEvent e) {}
 
-class Point {
-    public int x;
-    public int y;
+    @Override
+    public void mouseExited(MouseEvent e) {}
+
+    public void addState(IApplicationState applicationState) {
+        this.applicationState = applicationState;
+    }
+
 }

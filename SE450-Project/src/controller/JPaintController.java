@@ -2,13 +2,14 @@ package controller;
 
 import model.interfaces.IApplicationState;
 import view.EventName;
-import view.interfaces.IEventCallback;
 import view.interfaces.IUiModule;
 
 public class JPaintController implements IJPaintController {
-    private final IUiModule uiModule;
-    private final IApplicationState applicationState;
+    //instance variables
+    private final IUiModule uiModule; //view
+    private final IApplicationState applicationState; //model
 
+    //constructor
     public JPaintController(IUiModule uiModule, IApplicationState applicationState) {
         this.uiModule = uiModule;
         this.applicationState = applicationState;
@@ -25,5 +26,7 @@ public class JPaintController implements IJPaintController {
         uiModule.addEvent(EventName.CHOOSE_SECONDARY_COLOR, () -> applicationState.setActiveSecondaryColor());
         uiModule.addEvent(EventName.CHOOSE_SHADING_TYPE, () -> applicationState.setActiveShadingType());
         uiModule.addEvent(EventName.CHOOSE_MOUSE_MODE, () -> applicationState.setActiveStartAndEndPointMode());
+        //uiModule.addEvent(EventName.UNDO, () -> applicationState.setUndo());
+        //uiModule.addEvent(EventName.REDO, () -> applicationState.setRedo());
     }
 }
