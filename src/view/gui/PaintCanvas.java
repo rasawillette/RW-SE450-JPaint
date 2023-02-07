@@ -35,62 +35,51 @@ public class PaintCanvas extends JPanel {
         switch (Component.activeShapeType) {
             case RECTANGLE:
                 drawRectangle(graphics2d);
+                selectShapes(graphics2d);
+                moveShapes(graphics2d);
                 break;
 
             case ELLIPSE:
                 drawEllipse(graphics2d);
+                selectShapes(graphics2d);
+                moveShapes(graphics2d);
                 break;
 
             case TRIANGLE:
                 drawTriangle(graphics2d);
+                selectShapes(graphics2d);
+                moveShapes(graphics2d);
                 break;
         }
 
     }
 
+
     public Color getColor(ShapeColor shapeColor) {
         switch (shapeColor) {
-            case BLACK:
-                return Color.black;
-            case BLUE:
-                return Color.blue;
-            case CYAN:
-                return Color.cyan;
-            case DARK_GRAY:
-                return Color.darkGray;
-            case GRAY:
-                return Color.gray;
-            case GREEN:
-                return Color.green;
-            case LIGHT_GRAY:
-                return Color.lightGray;
-            case MAGENTA:
-                return Color.magenta;
-            case ORANGE:
-                return Color.orange;
-            case PINK:
-                return Color.pink;
-            case RED:
-                return Color.red;
-            case WHITE:
-                return Color.white;
-            case YELLOW:
-                return Color.yellow;
-            default:
-                return Color.black;
+            case BLACK: return Color.black;
+            case BLUE: return Color.blue;
+            case CYAN: return Color.cyan;
+            case DARK_GRAY: return Color.darkGray;
+            case GRAY: return Color.gray;
+            case GREEN: return Color.green;
+            case LIGHT_GRAY: return Color.lightGray;
+            case MAGENTA: return Color.magenta;
+            case ORANGE: return Color.orange;
+            case PINK: return Color.pink;
+            case RED: return Color.red;
+            case WHITE: return Color.white;
+            case YELLOW: return Color.yellow;
+            default: return Color.black;
         }
     }
 
     public ShapeShadingType getShading(ShapeShadingType shapeShadingType) {
         switch (shapeShadingType) {
-            case OUTLINE:
-                return ShapeShadingType.OUTLINE;
-            case FILLED_IN:
-                return ShapeShadingType.FILLED_IN;
-            case OUTLINE_AND_FILLED_IN:
-                return ShapeShadingType.OUTLINE_AND_FILLED_IN;
-            default:
-                return ShapeShadingType.FILLED_IN;
+            case OUTLINE: return ShapeShadingType.OUTLINE;
+            case FILLED_IN: return ShapeShadingType.FILLED_IN;
+            case OUTLINE_AND_FILLED_IN: return ShapeShadingType.OUTLINE_AND_FILLED_IN;
+            default: return ShapeShadingType.FILLED_IN;
         }
     }
 
@@ -208,6 +197,48 @@ public class PaintCanvas extends JPanel {
                 graphics2d.drawPolygon(xPoints, yPoints, nPoints);
             }
         }
+    }
+
+    private void selectShapes(Graphics2D graphics2d) {
+        System.out.println("select shapes");
+
+        // collision detection algorithm goes here
+        // https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+
+        /*
+        Crafty.init(200, 200);
+
+        const dim1 = { x: 5, y: 5, w: 50, h: 50 };
+        const dim2 = { x: 20, y: 10, w: 60, h: 40 };
+
+        const rect1 = Crafty.e("2D, Canvas, Color").attr(dim1).color("red");
+
+        const rect2 = Crafty.e("2D, Canvas, Color, Keyboard, Fourway")
+            .fourway(2)
+            .attr(dim2)
+            .color("blue");
+
+        rect2.bind("EnterFrame", function () {
+            if (rect1.x < rect2.x + rect2.w &&
+                rect1.x + rect1.w > rect2.x &&
+                rect1.y < rect2.y + rect2.h &&
+                rect1.h + rect1.y > rect2.y) {
+
+                    // Collision detected!
+                    this.color("green");
+            }
+
+            else {
+                // No collision
+                this.color("blue");
+            }
+        }
+         */
+    }
+
+    private void moveShapes(Graphics2D graphics2d) {
+        System.out.println("move shapes");
+
     }
 
 
