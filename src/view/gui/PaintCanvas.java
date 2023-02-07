@@ -2,6 +2,7 @@ package view.gui;
 
 import controller.Component;
 import model.ShapeColor;
+import model.ShapeShadingType;
 import model.interfaces.IApplicationState;
 
 import javax.swing.*;
@@ -33,7 +34,7 @@ public class PaintCanvas extends JPanel {
             case RECTANGLE : drawRectangle(graphics2d);
             break;
 
-            case ELLIPSE : drawCircle(graphics2d);
+            case ELLIPSE : drawEllipse(graphics2d);
             break;
 
             case TRIANGLE : drawTriangle(graphics2d);
@@ -48,7 +49,7 @@ public class PaintCanvas extends JPanel {
             case BLUE: return Color.blue;
             case CYAN: return Color.cyan;
             case DARK_GRAY: return Color.darkGray;
-            case GRAY: return Color.GRAY;
+            case GRAY: return Color.gray;
             case GREEN: return Color.green;
             case LIGHT_GRAY: return Color.lightGray;
             case MAGENTA: return Color.magenta;
@@ -58,6 +59,15 @@ public class PaintCanvas extends JPanel {
             case WHITE: return Color.white;
             case YELLOW: return Color.yellow;
             default: return Color.black;
+        }
+    }
+
+    public ShapeShadingType getShading(ShapeShadingType shapeShadingType) {
+        switch (shapeShadingType) {
+            case OUTLINE : return ShapeShadingType.OUTLINE;
+            case FILLED_IN : return ShapeShadingType.FILLED_IN;
+            case OUTLINE_AND_FILLED_IN : return ShapeShadingType.OUTLINE_AND_FILLED_IN;
+            default: return ShapeShadingType.FILLED_IN;
         }
     }
 
@@ -71,7 +81,16 @@ public class PaintCanvas extends JPanel {
             int width = applicationState.getStop().x - applicationState.getStart().x;
             int height = applicationState.getStop().y - applicationState.getStart().y;
 
+            // outline
+            graphics2d.setStroke(new BasicStroke(5));
+            //graphics2d.setColor(getColor(applicationState.getActiveSecondaryColor()));
+            graphics2d.drawRect(applicationState.getStart().x, applicationState.getStart().y, width, height);
+
+            // filled in
             graphics2d.fillRect(applicationState.getStart().x, applicationState.getStart().y, width, height);
+
+            // outline and filled in
+
         }
 
 
@@ -87,11 +106,65 @@ public class PaintCanvas extends JPanel {
         graphics2d.drawRect(7, 8, 210, 410);*/
     }
 
-    private void drawTriangle(Graphics2D graphics2d) {
+    private void drawEllipse(Graphics2D graphics2d) {
+        System.out.println("draw ellipse " + applicationState.getStart() + applicationState.getStop());
+
+        if (applicationState.getStart() != null && applicationState.getStop() != null) {
+            applicationState.getActivePrimaryColor();
+            graphics2d.setColor(getColor(applicationState.getActivePrimaryColor()));
+
+            int width = applicationState.getStop().x - applicationState.getStart().x;
+            int height = applicationState.getStop().y - applicationState.getStart().y;
+
+            applicationState.getActiveShapeShadingType();
+            //graphics2d.setActiveShadingType(getShading(applicationState.getActiveShapeShadingType()));
+
+            // outline
+            if (applicationState.getActiveShapeShadingType() == ShapeShadingType.OUTLINE) {
+                System.out.println("shading type is outline");
+                //graphics2d.setStroke(new BasicStroke(5));
+                //graphics2d.setColor(getColor(applicationState.getActiveSecondaryColor()));
+                graphics2d.drawOval(applicationState.getStart().x, applicationState.getStart().y, width, height);
+            }
+
+            // filled in
+            if (applicationState.getActiveShapeShadingType() == ShapeShadingType.FILLED_IN) {
+                System.out.println("shading type is filled in");
+                graphics2d.fillOval(applicationState.getStart().x, applicationState.getStart().y, width, height);
+            }
+
+            // outline and filled in
+            if (applicationState.getActiveShapeShadingType() == ShapeShadingType.OUTLINE_AND_FILLED_IN) {
+                System.out.println("shading type is outlined and filled in");
+                graphics2d.fillOval(applicationState.getStart().x, applicationState.getStart().y, width, height);
+
+                //graphics2d.setStroke(new BasicStroke(5));
+                graphics2d.setColor(getColor(applicationState.getActiveSecondaryColor()));
+                graphics2d.drawOval(applicationState.getStart().x, applicationState.getStart().y, width, height);
+            }
+
+
+        }
 
     }
 
-    private void drawCircle(Graphics2D graphics2d) {
+    private void drawTriangle(Graphics2D graphics2d) {
+        System.out.println("draw triangle " + applicationState.getStart() + applicationState.getStop());
+
+        if (applicationState.getStart() != null && applicationState.getStop() != null) {
+            applicationState.getActivePrimaryColor();
+            graphics2d.setColor(getColor(applicationState.getActivePrimaryColor()));
+
+            int width = applicationState.getStop().x - applicationState.getStart().x;
+            int height = applicationState.getStop().y - applicationState.getStart().y;
+
+            int[] xPoints = {applicationState.getStart().x, applicationState.getStop().x, applicationState.getStart().x};
+            int[] yPoints = {applicationState.getStart().y, applicationState.getStop().y, applicationState.getStop().y};
+            int nPoints = 3;
+
+            //graphics2d.drawPolygon(xPoints, yPoints,nPoints);
+            graphics2d.fillPolygon(xPoints, yPoints,nPoints);
+        }
 
     }
 
