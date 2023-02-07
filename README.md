@@ -18,6 +18,7 @@ I've been struggling with this assignment and spent a lot of time trying to figu
 2. Draw different shading types
 3. Select mouse mode
 4. Move mouse mode 
+5. Undo + redo
 
 Bugs:
 1. Can only draw the rectangle and ellipse from the top left to right, not right to left
