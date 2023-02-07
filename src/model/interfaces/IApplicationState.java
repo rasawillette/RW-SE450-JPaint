@@ -1,9 +1,9 @@
 package model.interfaces;
 
-import controller.ClickPoint;
-import model.ShapeColor;
-import model.ShapeShadingType;
-import model.ShapeType;
+import model.shapes.Point;
+import model.shapes.ShapeColor;
+import model.shapes.ShapeShadingType;
+import model.shapes.ShapeType;
 import model.MouseMode;
 
 public interface IApplicationState {
@@ -27,8 +27,8 @@ public interface IApplicationState {
 
     MouseMode getActiveMouseMode();
 
-    void setStart(ClickPoint start);
-    void setStop(ClickPoint stop);
-    ClickPoint getStart();
-    ClickPoint getStop();
+    void setStart(Point start);
+    void setStop(Point stop);
+    Point getStart();
+    Point getStop();
 }

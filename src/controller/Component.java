@@ -1,8 +1,8 @@
 package controller;
 
-import model.ShapeColor;
-import model.ShapeShadingType;
-import model.ShapeType;
+import model.shapes.ShapeColor;
+import model.shapes.ShapeShadingType;
+import model.shapes.ShapeType;
 
 public class Component {
 

@@ -1,8 +1,8 @@
 package model.dialogs;
 
-import model.ShapeColor;
-import model.ShapeShadingType;
-import model.ShapeType;
+import model.shapes.ShapeColor;
+import model.shapes.ShapeShadingType;
+import model.shapes.ShapeType;
 import model.MouseMode;
 import model.interfaces.IApplicationState;
 import model.interfaces.IDialogProvider;

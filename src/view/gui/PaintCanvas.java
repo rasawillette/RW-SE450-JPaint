@@ -2,15 +2,20 @@ package view.gui;
 
 import controller.Component;
 import model.MouseMode;
-import model.ShapeColor;
-import model.ShapeShadingType;
 import model.interfaces.IApplicationState;
+import model.shapes.ShapeColor;
+import model.shapes.ShapeShadingType;
+import view.interfaces.IPaintCanvas;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class PaintCanvas extends JPanel {
+public class PaintCanvas extends JComponent implements IPaintCanvas {
     //IGuiWindow guiWindow;
+
+    public Graphics2D getGraphics2D() {
+        return (Graphics2D)getGraphics();
+    }
 
     IApplicationState applicationState;
 
@@ -103,13 +108,13 @@ public class PaintCanvas extends JPanel {
             }
 
             // filled in
-            if (applicationState.getActiveShapeShadingType() == ShapeShadingType.FILLED_IN) {
+            else if (applicationState.getActiveShapeShadingType() == ShapeShadingType.FILLED_IN) {
                 System.out.println("shading type is filled in");
                 graphics2d.fillRect(applicationState.getStart().x, applicationState.getStart().y, width, height);
             }
 
             // outline and filled in
-            if (applicationState.getActiveShapeShadingType() == ShapeShadingType.OUTLINE_AND_FILLED_IN) {
+            else if (applicationState.getActiveShapeShadingType() == ShapeShadingType.OUTLINE_AND_FILLED_IN) {
                 System.out.println("shading type is outlined and filled in");
                 graphics2d.fillRect(applicationState.getStart().x, applicationState.getStart().y, width, height);
                 graphics2d.setColor(getColor(applicationState.getActiveSecondaryColor()));
@@ -175,13 +180,13 @@ public class PaintCanvas extends JPanel {
             }
 
             // filled in
-            if (applicationState.getActiveShapeShadingType() == ShapeShadingType.FILLED_IN) {
+            else if (applicationState.getActiveShapeShadingType() == ShapeShadingType.FILLED_IN) {
                 System.out.println("shading type is filled in");
                 graphics2d.fillPolygon(xPoints, yPoints, nPoints);
             }
 
             // outline and filled in
-            if (applicationState.getActiveShapeShadingType() == ShapeShadingType.OUTLINE_AND_FILLED_IN) {
+            else if (applicationState.getActiveShapeShadingType() == ShapeShadingType.OUTLINE_AND_FILLED_IN) {
                 System.out.println("shading type is outlined and filled in");
                 graphics2d.fillPolygon(xPoints, yPoints, nPoints);
                 graphics2d.setColor(getColor(applicationState.getActiveSecondaryColor()));
@@ -272,4 +277,5 @@ public class PaintCanvas extends JPanel {
     public void addState(IApplicationState applicationState) {
         this.applicationState = applicationState;
     }
+
 }

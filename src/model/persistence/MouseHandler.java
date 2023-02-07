@@ -1,6 +1,6 @@
 package model.persistence;
 
-import controller.ClickPoint;
+import model.shapes.Point;
 import model.interfaces.IApplicationState;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -9,42 +9,40 @@ import java.lang.Math;
 // override 2 methods
 public class MouseHandler implements MouseListener {
 
-    public ClickPoint startClickPoint;
-    public ClickPoint endClickPoint;
+    public Point startPoint;
+    public Point endPoint;
 
     //IGuiWindow guiWindow;
     IApplicationState applicationState;
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-
-    }
+    public void mouseClicked(MouseEvent e) {}
 
     // mouse pressed
     @Override
     public void mousePressed(MouseEvent e) {
-        startClickPoint = new ClickPoint();
-        startClickPoint.x = e.getX();
-        startClickPoint.y = e.getY();
-        applicationState.setStart(startClickPoint);
-        System.out.println("mouse pressed" + startClickPoint.x + " " + startClickPoint.y);
+        startPoint = new Point();
+        startPoint.x = e.getX();
+        startPoint.y = e.getY();
+        applicationState.setStart(startPoint);
+        System.out.println("mouse pressed" + startPoint.x + " " + startPoint.y);
     }
 
     // mouse released
     @Override
     public void mouseReleased(MouseEvent e) {
 
-        endClickPoint = new ClickPoint();
-        endClickPoint.x = e.getX();
-        endClickPoint.y = e.getY();
-        applicationState.setStop(endClickPoint);
+        endPoint = new Point();
+        endPoint.x = e.getX();
+        endPoint.y = e.getY();
+        applicationState.setStop(endPoint);
 
         // calculate height
-        int height = Math.abs(endClickPoint.y- startClickPoint.y);
+        int height = (int) Math.abs(endPoint.y- startPoint.y);
         // calculate width
-        int width = Math.abs(endClickPoint.x- startClickPoint.x);
+        int width = (int) Math.abs(endPoint.x- startPoint.x);
 
-        System.out.println("mouse pressed" + height + " " + width);
+        System.out.println("mouse released" + height + " " + width);
         e.getComponent().repaint();
     }
 

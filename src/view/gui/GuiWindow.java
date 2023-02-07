@@ -1,6 +1,5 @@
 package view.gui;
 
-import controller.ClickPoint;
 import view.EventName;
 import view.interfaces.IGuiWindow;
 

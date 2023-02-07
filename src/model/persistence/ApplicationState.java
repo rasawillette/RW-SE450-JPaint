@@ -1,11 +1,11 @@
 package model.persistence;
 
-import controller.ClickPoint;
+import model.shapes.Point;
 import controller.Component;
 import model.MouseMode;
-import model.ShapeColor;
-import model.ShapeShadingType;
-import model.ShapeType;
+import model.shapes.ShapeColor;
+import model.shapes.ShapeShadingType;
+import model.shapes.ShapeType;
 import model.dialogs.DialogProvider;
 import model.interfaces.IApplicationState;
 import model.interfaces.IDialogProvider;
@@ -22,8 +22,8 @@ public class ApplicationState implements IApplicationState {
     private ShapeShadingType activeShapeShadingType;
     private MouseMode activeMouseMode;
 
-    private ClickPoint start;
-    private ClickPoint stop;
+    private Point start;
+    private Point stop;
 
     //constructor
     public ApplicationState(IUiModule uiModule) {
@@ -101,19 +101,19 @@ public class ApplicationState implements IApplicationState {
     }
 
     @Override
-    public void setStart(ClickPoint start) {
+    public void setStart(Point start) {
         this.start = start;
     }
     @Override
-    public void setStop(ClickPoint stop) {
+    public void setStop(Point stop) {
         this.stop = stop;
     }
     @Override
-    public ClickPoint getStart() {
+    public Point getStart() {
         return start;
     }
     @Override
-    public ClickPoint getStop() {
+    public Point getStop() {
         return stop;
     }
 }

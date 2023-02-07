@@ -1,10 +1,11 @@
 package controller;
 
-import commands.RedoCommand;
-import commands.UndoCommand;
+import model.commands.RedoCommand;
+import model.commands.UndoCommand;
 import model.interfaces.IApplicationState;
 import view.EventName;
 import view.interfaces.IUiModule;
+
 
 public class JPaintController implements IJPaintController {
     //instance variables
@@ -34,5 +35,6 @@ public class JPaintController implements IJPaintController {
 
         //uiModule.addEvent(EventName.REDO, () -> CommandHistory.redo());
         uiModule.addEvent(EventName.REDO, () -> new RedoCommand().execute());
+
     }
 }
