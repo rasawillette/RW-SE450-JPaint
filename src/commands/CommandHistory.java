@@ -1,6 +1,4 @@
-package model.dialogs;
-
-import controller.IUndoable;
+package commands;
 
 import java.util.Stack;
 

@@ -1,12 +1,13 @@
-package controller;
+package model.persistence;
 
+import controller.ClickPoint;
 import model.interfaces.IApplicationState;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.lang.Math;
 
 // override 2 methods
-public class ClickHandler implements MouseListener {
+public class MouseHandler implements MouseListener {
 
     public ClickPoint startClickPoint;
     public ClickPoint endClickPoint;

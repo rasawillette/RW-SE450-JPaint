@@ -1,6 +1,4 @@
-package model.dialogs;
-
-import controller.ICommand;
+package commands;
 
 public class RedoCommand implements ICommand {
 

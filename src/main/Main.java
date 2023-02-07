@@ -1,6 +1,6 @@
 package main;
 
-import controller.ClickHandler;
+import model.persistence.MouseHandler;
 import controller.IJPaintController;
 import controller.JPaintController;
 import model.persistence.ApplicationState;
@@ -13,15 +13,15 @@ import view.interfaces.IUiModule;
 public class Main {
     public static void main(String[] args){
         PaintCanvas paintCanvas = new PaintCanvas();
-        ClickHandler clickHandler = new ClickHandler();
-        paintCanvas.addMouseListener(clickHandler);
+        MouseHandler mouseHandler = new MouseHandler();
+        paintCanvas.addMouseListener(mouseHandler);
 
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);
         IUiModule uiModule = new Gui(guiWindow);
 
         ApplicationState appState = new ApplicationState(uiModule);
         paintCanvas.addState(appState);
-        clickHandler.addState(appState);
+        mouseHandler.addState(appState);
         IJPaintController controller = new JPaintController(uiModule, appState);
 
         controller.setup();

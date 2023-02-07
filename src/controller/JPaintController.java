@@ -1,7 +1,7 @@
 package controller;
 
-import model.dialogs.RedoCommand;
-import model.dialogs.UndoCommand;
+import commands.RedoCommand;
+import commands.UndoCommand;
 import model.interfaces.IApplicationState;
 import view.EventName;
 import view.interfaces.IUiModule;
