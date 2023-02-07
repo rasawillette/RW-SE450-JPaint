@@ -1,5 +1,9 @@
 package FactoryDemo;
 
+import view.gui.Circle;
+import view.gui.Rectangle;
+import view.gui.Triangle;
+
 public class ShapeFactory {
     private ShapeFactory(){}
 

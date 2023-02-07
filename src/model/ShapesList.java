@@ -1,20 +1,20 @@
 package model;
 
-import controller.ClickPoint;
+import model.interfaces.IDraw;
 
 import java.util.ArrayList;
 
-public class ShapesList {
-    private ArrayList<ClickPoint> arrayList;
+public class ShapesList  {
+    private ArrayList<IDraw> arrayList;
 
     public ShapesList(){
-        arrayList = new ArrayList<ClickPoint>();
+        arrayList = new ArrayList<IDraw>();
     }
 
-    public void addShapes(ClickPoint shape){
+    public void addShapes(IDraw shape){
         arrayList.add(shape);
     }
-    public void removeShapes(ClickPoint shape){
+    public void removeShapes(IDraw shape){
         arrayList.remove(shape);
     }
 }
