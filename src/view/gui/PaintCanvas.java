@@ -1,6 +1,7 @@
 package view.gui;
 
 import controller.Component;
+import model.MouseMode;
 import model.ShapeColor;
 import model.ShapeShadingType;
 import model.interfaces.IApplicationState;
@@ -115,16 +116,6 @@ public class PaintCanvas extends JPanel {
                 graphics2d.drawRect(applicationState.getStart().x, applicationState.getStart().y, width, height);
             }
         }
-        // Outlined rectangle
-        //graphics2d.setStroke(new BasicStroke(5));
-        /*graphics2d.setColor(Color.BLUE);
-        graphics2d.drawRect(12, 13, 200, 400);
-
-        // Selected Shape
-        Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1, new float[]{9}, 0);
-        graphics2d.setStroke(stroke);
-        graphics2d.setColor(Color.BLACK);
-        graphics2d.drawRect(7, 8, 210, 410);*/
     }
 
     private void drawEllipse(Graphics2D graphics2d) {
@@ -202,9 +193,35 @@ public class PaintCanvas extends JPanel {
     private void selectShapes(Graphics2D graphics2d) {
         System.out.println("select shapes");
 
-        // collision detection algorithm goes here
-        // https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+        applicationState.getActiveMouseMode();
 
+        // collision detection algorithm goes here
+
+        int[] selectedList = {};
+
+        if (applicationState.getActiveMouseMode() == MouseMode.SELECT) {
+
+            if (applicationState.getStart() != null && applicationState.getStop() != null) {
+
+                int width = applicationState.getStop().x - applicationState.getStart().x;
+                int height = applicationState.getStop().y - applicationState.getStart().y;
+
+            /* pseudo code
+            for each shape in the command history list
+                if shape is in bounding box
+                    then add shape to selected list
+                else
+                    increment list of command history shapes + 1
+            */
+            }
+
+        else {
+                return;
+            }
+
+        }
+
+        // https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
         /*
         Crafty.init(200, 200);
 
@@ -238,6 +255,16 @@ public class PaintCanvas extends JPanel {
 
     private void moveShapes(Graphics2D graphics2d) {
         System.out.println("move shapes");
+
+        // do NOT change shape size itself, just it's position
+
+        /* pseudo code
+        selectShapes must be true
+        find mouse start point and end point
+        to move shapes:
+            end point x - start point x
+            end point y - start point y
+        */
 
     }
 

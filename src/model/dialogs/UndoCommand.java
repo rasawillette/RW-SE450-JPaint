@@ -1,17 +1,11 @@
 package model.dialogs;
 
-import controller.IAtmCommand;
+import controller.ICommand;
 
-public class UndoCommand implements IAtmCommand {
-
-    @Override
-    public void redoCommand() {}
-
+public class UndoCommand implements ICommand {
     @Override
     public void execute() {
         CommandHistory.undo();
+        System.out.println("undo command");
     }
-
-    @Override
-    public void undoCommand() {}
 }
