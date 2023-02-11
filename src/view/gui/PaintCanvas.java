@@ -2,7 +2,7 @@ package view.gui;
 
 import controller.Component;
 import model.MouseMode;
-import model.interfaces.IApplicationState;
+import model.persistence.ApplicationState;
 import model.shapes.ShapeColor;
 import model.shapes.ShapeShadingType;
 import view.interfaces.IPaintCanvas;
@@ -17,7 +17,7 @@ public class PaintCanvas extends JComponent implements IPaintCanvas {
         return (Graphics2D)getGraphics();
     }
 
-    IApplicationState applicationState;
+    ApplicationState applicationState;
 
     public PaintCanvas() {
         setSize(300, 200);
@@ -58,6 +58,11 @@ public class PaintCanvas extends JComponent implements IPaintCanvas {
                 break;
         }
 
+    }
+
+    public void update(){
+        System.out.println("update in paint canvas");
+        repaint();
     }
 
 
@@ -273,8 +278,7 @@ public class PaintCanvas extends JComponent implements IPaintCanvas {
 
     }
 
-
-    public void addState(IApplicationState applicationState) {
+    public void addState(ApplicationState applicationState) {
         this.applicationState = applicationState;
     }
 

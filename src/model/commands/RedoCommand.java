@@ -7,5 +7,4 @@ public class RedoCommand implements ICommand {
         CommandHistory.redo();
         System.out.println("redo command");
     }
-
 }

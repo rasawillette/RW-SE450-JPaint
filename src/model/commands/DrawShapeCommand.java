@@ -9,34 +9,38 @@ import view.gui.PaintCanvas;
 
 public class DrawShapeCommand implements ICommand, IUndoable {
 
-    private PaintCanvas paintCanvas;
-    private ShapeList shapeList;
-    private ApplicationState applicationState;
+    ApplicationState applicationState;
+    IShape newShape;
+    ShapeList shapeList;
+    PaintCanvas paintCanvas;
 
     Point startPoint;
     Point endPoint;
-    IShape newShape;
 
-    public DrawShapeCommand(Point startPoint, Point endPoint, ApplicationState applicationState){
+    public DrawShapeCommand(Point startPoint, Point endPoint, ApplicationState applicationState, PaintCanvas paintCanvas){
         this.startPoint = startPoint;
         this.endPoint = endPoint;
         this.applicationState = applicationState;
-        newShape = ShapeFactory.getShape(startPoint, endPoint, applicationState);
+        this.paintCanvas = paintCanvas;
     }
-
 
     @Override
     public void execute() {
+        newShape = ShapeFactory.getShape(startPoint, endPoint, applicationState);
+        this.shapeList.addShape(newShape);
+        paintCanvas.update();
         CommandHistory.add(this);
     }
 
     @Override
     public void undo() {
-
+        shapeList.removeShape(newShape);
+        paintCanvas.update();
     }
 
     @Override
     public void redo() {
-
+        shapeList.addShape(newShape);
+        paintCanvas.update();
     }
 }
