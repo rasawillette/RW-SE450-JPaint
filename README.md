@@ -1,5 +1,6 @@
 # private-RW-SE450
 
+Link to my GitHub: https://github.com/rasawillette/private-RW-SE450
 
 ### 1/28 - Sprint 1
 
