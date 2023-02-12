@@ -22,6 +22,7 @@ I've been struggling with this assignment and spent a lot of time trying to figu
 
 Bugs:
 1. Can only draw the rectangle and ellipse from the top left to lower right, not right to left
+2. I'm still struggling with literally every single thing
 
 My 2 Design Patterns:
 1. **Command**
