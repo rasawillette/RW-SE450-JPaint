@@ -1,10 +1,12 @@
 package model.persistence;
 
+import model.interfaces.IMouseState;
 import model.shapes.Point;
-import model.interfaces.IApplicationState;
+import model.shapes.ShapeList;
+import view.gui.PaintCanvas;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.lang.Math;
 
 // override 2 methods
 public class MouseHandler implements MouseListener {
@@ -13,7 +15,16 @@ public class MouseHandler implements MouseListener {
     public Point endPoint;
 
     //IGuiWindow guiWindow;
-    IApplicationState applicationState;
+    ApplicationState applicationState;
+    PaintCanvas paintCanvas;
+    ShapeList shapeList;
+    IMouseState mouseState;
+
+    public MouseHandler(ApplicationState applicationState,PaintCanvas paintCanvas,ShapeList shapeList){
+        this.applicationState = applicationState;
+        this.paintCanvas = paintCanvas;
+        this.shapeList = shapeList;
+    }
 
     @Override
     public void mouseClicked(MouseEvent e) {}
@@ -52,7 +63,7 @@ public class MouseHandler implements MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {}
 
-    public void addState(IApplicationState applicationState) {
+    public void addState(ApplicationState applicationState) {
         this.applicationState = applicationState;
     }
 

@@ -1,10 +1,11 @@
 package model.interfaces;
 
+import model.persistence.ApplicationState;
+import model.shapes.Point;
 import model.shapes.ShapeList;
-import model.shapes.ShapeParams;
 import view.gui.PaintCanvas;
 
 public interface IMouseState {
 
-    void execute(PaintCanvas paintCanvas, ShapeParams shapeParameters,  ShapeList shapeList);
+    void execute(Point startPoint, Point endPoint, ApplicationState applicationState, PaintCanvas paintCanvas, ShapeList shapeList);
 }
