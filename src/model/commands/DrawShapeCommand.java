@@ -5,13 +5,18 @@ import model.persistence.ApplicationState;
 import model.shapes.Point;
 import model.shapes.ShapeFactory;
 import model.shapes.ShapeList;
+import model.shapes.ShapeType;
 import view.gui.PaintCanvas;
+
+import java.awt.*;
 
 public class DrawShapeCommand implements ICommand, IUndoable {
 
+    Graphics2D graphics2d;
     ApplicationState applicationState;
     IShape newShape;
     ShapeList shapeList;
+    ShapeType shape;
     PaintCanvas paintCanvas;
 
     Point startPoint;
@@ -26,10 +31,11 @@ public class DrawShapeCommand implements ICommand, IUndoable {
 
     @Override
     public void execute() {
+        shape = applicationState.getActiveShapeType();
         newShape = ShapeFactory.getShape(startPoint, endPoint, applicationState);
-        this.shapeList.addShape(newShape);
         paintCanvas.update();
         CommandHistory.add(this);
+        newShape.draw(graphics2d);
     }
 
     @Override

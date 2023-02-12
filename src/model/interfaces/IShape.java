@@ -1,15 +1,17 @@
 package model.interfaces;
 
+import model.persistence.ApplicationState;
+import model.shapes.Point;
 import model.shapes.ShapeColor;
 import model.shapes.ShapeShadingType;
 import model.shapes.ShapeType;
-import model.persistence.ApplicationState;
-import model.shapes.BoundingBox;
-import model.shapes.Point;
 
 import java.awt.*;
 
 public interface IShape {
+    void draw(Graphics2D g);
+
+    void selectDraw(Graphics2D g);
 
     // if not overriding all methods in the shape class files, then remove from interface
 
@@ -32,8 +34,6 @@ public interface IShape {
     Point getEndPoint();
 
     void setSelected(boolean bool);
-    BoundingBox getBoundingBox();
-    void drawBoundingBox(Graphics2D g);
 
     ShapeType getShape();
     ShapeColor getPrimaryColor();

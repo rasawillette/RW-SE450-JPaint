@@ -39,4 +39,8 @@ public class ShapeList {
     public ArrayList<IShape> getSelectedList(){
         return selectedList;
     }
+
+    public boolean contains(IShape shape) {
+        return  shapeList.contains(shape);
+    }
 }

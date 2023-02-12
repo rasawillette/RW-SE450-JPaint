@@ -6,8 +6,6 @@ import model.shapes.Point;
 import model.shapes.ShapeList;
 import view.gui.PaintCanvas;
 
-import java.awt.*;
-
 public class SelectShapeCommand implements ICommand,IUndoable {
 
     ApplicationState applicationState;
@@ -32,20 +30,30 @@ public class SelectShapeCommand implements ICommand,IUndoable {
             paintCanvas.update();
             System.out.println("selected command " + newShape.getStartPoint() + newShape.getEndPoint());
 
-            Graphics2D g = paintCanvas.getGraphics2D();
+            //Graphics2D g = paintCanvas.getGraphics2D();
 
             // if there is one click
-            if (startPoint != null || endPoint != null ) {
+            if (startPoint != null) {
                 System.out.println("1 click select");
+
+                // if the click contains a shape
+                if (shape.containsPoint(startPoint.x, startPoint.y)) {
+                    shapeList.addSelectedShape(shape);
+                }
             }
 
             // if there are 2 clicks
-            else if (startPoint != null && endPoint != null){
+            else if (!startPoint.equals(endPoint)){
                 System.out.println("2 clicks select");
+
+                // if the bounding box contains any shapes
+                if (shape.containsPoint(startPoint.x, startPoint.y) || shape.containsPoint(endPoint.x, endPoint.y)) {
+                    shapeList.addSelectedShape(shape);
+                }
             }
-
+            return;
         }
-
+        shapeList.getSelectedList();
     }
 
     @Override

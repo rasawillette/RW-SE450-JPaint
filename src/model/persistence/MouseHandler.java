@@ -1,5 +1,6 @@
 package model.persistence;
 
+import model.MouseMode;
 import model.interfaces.IMouseState;
 import model.shapes.Point;
 import model.shapes.ShapeList;
@@ -42,7 +43,6 @@ public class MouseHandler implements MouseListener {
     // mouse released
     @Override
     public void mouseReleased(MouseEvent e) {
-
         endPoint = new Point();
         endPoint.x = e.getX();
         endPoint.y = e.getY();
@@ -55,6 +55,21 @@ public class MouseHandler implements MouseListener {
 
         System.out.println("mouse released" + height + " " + width);
         e.getComponent().repaint();
+
+        if (applicationState.getActiveMouseMode().equals(MouseMode.DRAW)) {
+            mouseState = new DrawMouseState();
+            mouseState.execute(startPoint,endPoint,applicationState,paintCanvas,shapeList);
+        }
+
+        else if (applicationState.getActiveMouseMode().equals(MouseMode.SELECT)) {
+            mouseState = new SelectMouseState();
+            mouseState.execute(startPoint,endPoint,applicationState,paintCanvas,shapeList);
+        }
+
+        else if(applicationState.getActiveMouseMode().equals(MouseMode.MOVE)){
+            //mouseState = new MoveMouseState();
+            //mouseState.execute(startPoint,endPoint,applicationState,paintCanvas,shapeList);
+        }
     }
 
     @Override

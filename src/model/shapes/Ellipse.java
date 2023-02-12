@@ -11,10 +11,77 @@ public class Ellipse implements IShape {
     Point endPoint;
     ApplicationState applicationState;
 
+
     public Ellipse(Point startPoint, Point endPoint, ApplicationState applicationState) {
         this.startPoint = startPoint;
         this.endPoint = endPoint;
         this.applicationState = applicationState;
+    }
+
+    public Color getColor(ShapeColor shapeColor) {
+        switch (shapeColor) {
+            case BLACK: return Color.black;
+            case BLUE: return Color.blue;
+            case CYAN: return Color.cyan;
+            case DARK_GRAY: return Color.darkGray;
+            case GRAY: return Color.gray;
+            case GREEN: return Color.green;
+            case LIGHT_GRAY: return Color.lightGray;
+            case MAGENTA: return Color.magenta;
+            case ORANGE: return Color.orange;
+            case PINK: return Color.pink;
+            case RED: return Color.red;
+            case WHITE: return Color.white;
+            case YELLOW: return Color.yellow;
+            default: return Color.black;
+        }
+    }
+
+    @Override
+    public void draw(Graphics2D graphics2d) {
+
+        System.out.println("draw ellipse " + applicationState.getStart() + applicationState.getStop());
+
+        if (applicationState.getStart() != null && applicationState.getStop() != null) {
+            applicationState.getActivePrimaryColor();
+            graphics2d.setColor(getColor(applicationState.getActivePrimaryColor()));
+
+            int width = applicationState.getStop().x - applicationState.getStart().x;
+            int height = applicationState.getStop().y - applicationState.getStart().y;
+
+            applicationState.getActiveShapeShadingType();
+
+            // outline
+            if (applicationState.getActiveShapeShadingType() == ShapeShadingType.OUTLINE) {
+                    System.out.println("shading type is outline");
+                    graphics2d.drawOval(applicationState.getStart().x, applicationState.getStart().y, width, height);
+            }
+
+            // filled in
+            if (applicationState.getActiveShapeShadingType() == ShapeShadingType.FILLED_IN) {
+                System.out.println("shading type is filled in");
+                graphics2d.fillOval(applicationState.getStart().x, applicationState.getStart().y, width, height);
+            }
+
+            // outline and filled in
+            if (applicationState.getActiveShapeShadingType() == ShapeShadingType.OUTLINE_AND_FILLED_IN) {
+                System.out.println("shading type is outlined and filled in");
+                graphics2d.fillOval(applicationState.getStart().x, applicationState.getStart().y, width, height);
+                graphics2d.setColor(getColor(applicationState.getActiveSecondaryColor()));
+                graphics2d.drawOval(applicationState.getStart().x, applicationState.getStart().y, width, height);
+            }
+        }
+
+    }
+
+
+    public void selectDraw(Graphics2D g) {
+        Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1, new float[]{9}, 0);
+        g.setStroke(stroke);
+        g.setColor(Color.BLACK);
+        int width = applicationState.getStop().x - applicationState.getStart().x;
+        int height = applicationState.getStop().y - applicationState.getStart().y;
+        g.drawRect(applicationState.getStart().x, applicationState.getStart().y, width, height);
     }
 
     @Override
@@ -77,19 +144,7 @@ public class Ellipse implements IShape {
     }
 
     @Override
-    public void setSelected(boolean bool) {
-
-    }
-
-    @Override
-    public BoundingBox getBoundingBox() {
-        return null;
-    }
-
-    @Override
-    public void drawBoundingBox(Graphics2D g) {
-
-    }
+    public void setSelected(boolean bool) {}
 
     @Override
     public ShapeType getShape() {

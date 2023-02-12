@@ -1,21 +1,21 @@
 package model.shapes;
 
 public class BoundingBox {
-    int x;
-    int y;
+    Point start;
+    Point end;
 
     int width;
     int height;
 
-    public BoundingBox(int x, int y, int width, int height) {
-        this.x = x;
-        this.y = y;
+    public BoundingBox(Point start, Point end, int width, int height) {
+        this.start.x = start.x;
+        this.start.y = start.y;
+
+        this.end.x = end.x;
+        this.end.y = end.y;
+
         this.width = width;
         this.height = height;
     }
 
-    public boolean isColliding(BoundingBox other) {
-        return (x < other.x + other.width && x + width > other.x &&
-                y < other.y + other.height && y + height > other.y);
-    }
 }
