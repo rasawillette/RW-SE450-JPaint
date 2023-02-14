@@ -22,20 +22,22 @@ public class DrawShapeCommand implements ICommand, IUndoable {
     Point startPoint;
     Point endPoint;
 
-    public DrawShapeCommand(Point startPoint, Point endPoint, ApplicationState applicationState, PaintCanvas paintCanvas){
+    public DrawShapeCommand(Point startPoint, Point endPoint, ApplicationState applicationState, PaintCanvas paintCanvas,ShapeList shapeList){
         this.startPoint = startPoint;
         this.endPoint = endPoint;
         this.applicationState = applicationState;
         this.paintCanvas = paintCanvas;
+        this.shapeList = shapeList;
     }
 
     @Override
     public void execute() {
         shape = applicationState.getActiveShapeType();
         newShape = ShapeFactory.getShape(startPoint, endPoint, applicationState);
-        paintCanvas.update();
+        //newShape.draw(paintCanvas.getGraphics2D());
         CommandHistory.add(this);
-        newShape.draw(graphics2d);
+        shapeList.addShape(newShape);
+        paintCanvas.update();
     }
 
     @Override

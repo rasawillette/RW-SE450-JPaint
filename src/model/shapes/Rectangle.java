@@ -10,6 +10,8 @@ public class Rectangle implements IShape {
 	private Point startPoint;
 	private Point endPoint;
 	ApplicationState applicationState;
+	Graphics graphics2d;
+
 
 	public Rectangle(Point startPoint, Point endPoint, ApplicationState applicationState) {
 		this.startPoint = startPoint;
@@ -20,29 +22,47 @@ public class Rectangle implements IShape {
 
 	public Color getColor(ShapeColor shapeColor) {
 		switch (shapeColor) {
-			case BLACK: return Color.black;
-			case BLUE: return Color.blue;
-			case CYAN: return Color.cyan;
-			case DARK_GRAY: return Color.darkGray;
-			case GRAY: return Color.gray;
-			case GREEN: return Color.green;
-			case LIGHT_GRAY: return Color.lightGray;
-			case MAGENTA: return Color.magenta;
-			case ORANGE: return Color.orange;
-			case PINK: return Color.pink;
-			case RED: return Color.red;
-			case WHITE: return Color.white;
-			case YELLOW: return Color.yellow;
-			default: return Color.black;
+			case BLACK:
+				return Color.black;
+			case BLUE:
+				return Color.blue;
+			case CYAN:
+				return Color.cyan;
+			case DARK_GRAY:
+				return Color.darkGray;
+			case GRAY:
+				return Color.gray;
+			case GREEN:
+				return Color.green;
+			case LIGHT_GRAY:
+				return Color.lightGray;
+			case MAGENTA:
+				return Color.magenta;
+			case ORANGE:
+				return Color.orange;
+			case PINK:
+				return Color.pink;
+			case RED:
+				return Color.red;
+			case WHITE:
+				return Color.white;
+			case YELLOW:
+				return Color.yellow;
+			default:
+				return Color.black;
 		}
 	}
 
 	public ShapeShadingType getShading(ShapeShadingType shapeShadingType) {
 		switch (shapeShadingType) {
-			case OUTLINE: return ShapeShadingType.OUTLINE;
-			case FILLED_IN: return ShapeShadingType.FILLED_IN;
-			case OUTLINE_AND_FILLED_IN: return ShapeShadingType.OUTLINE_AND_FILLED_IN;
-			default: return ShapeShadingType.FILLED_IN;
+			case OUTLINE:
+				return ShapeShadingType.OUTLINE;
+			case FILLED_IN:
+				return ShapeShadingType.FILLED_IN;
+			case OUTLINE_AND_FILLED_IN:
+				return ShapeShadingType.OUTLINE_AND_FILLED_IN;
+			default:
+				return ShapeShadingType.FILLED_IN;
 		}
 	}
 
@@ -129,7 +149,7 @@ public class Rectangle implements IShape {
 
 	@Override
 	public void setApplicationState(ApplicationState applicationState) {
-
+		this.applicationState = applicationState;
 	}
 
 	@Override
@@ -182,49 +202,5 @@ public class Rectangle implements IShape {
 		return false;
 	}
 
+	}
 
-
-
-	/*
-	Graphics graphics2d;
-
-	System.out.println("draw triangle " + applicationState.getStart() + applicationState.getStop());
-
-
-
-	if (applicationState.getStart() != null && applicationState.getStop() != null) {
-		applicationState.getActivePrimaryColor();
-		graphics2d.setColor(getColor(applicationState.getActivePrimaryColor()));
-
-		int width = applicationState.getStop().x - applicationState.getStart().x;
-		int height = applicationState.getStop().y - applicationState.getStart().y;
-
-		int[] xPoints = {applicationState.getStart().x, applicationState.getStop().x, applicationState.getStart().x};
-		int[] yPoints = {applicationState.getStart().y, applicationState.getStop().y, applicationState.getStop().y};
-		int nPoints = 3;
-
-		applicationState.getActiveShapeShadingType();
-
-		// outline
-		if (applicationState.getActiveShapeShadingType() == ShapeShadingType.OUTLINE) {
-			System.out.println("shading type is outline");
-			graphics2d.drawPolygon(xPoints, yPoints, nPoints);
-		}
-
-		// filled in
-		else if (applicationState.getActiveShapeShadingType() == ShapeShadingType.FILLED_IN) {
-			System.out.println("shading type is filled in");
-			graphics2d.fillPolygon(xPoints, yPoints, nPoints);
-		}
-
-		// outline and filled in
-		else if (applicationState.getActiveShapeShadingType() == ShapeShadingType.OUTLINE_AND_FILLED_IN) {
-			System.out.println("shading type is outlined and filled in");
-			graphics2d.fillPolygon(xPoints, yPoints, nPoints);
-			graphics2d.setColor(getColor(applicationState.getActiveSecondaryColor()));
-			graphics2d.drawPolygon(xPoints, yPoints, nPoints);
-		}
-
-	 */
-
-}
