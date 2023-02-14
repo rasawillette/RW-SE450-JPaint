@@ -12,6 +12,7 @@ public class DrawMouseState implements IMouseState {
     public void execute(Point startPoint, Point endPoint, ApplicationState applicationState,
                         PaintCanvas paintCanvas, ShapeList shapeList) {
 
+
         DrawShapeCommand drawShapeCommand = new DrawShapeCommand(startPoint, endPoint, applicationState,
                 paintCanvas, shapeList);
 

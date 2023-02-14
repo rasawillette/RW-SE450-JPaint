@@ -42,35 +42,37 @@ public class Ellipse implements IShape {
 
         System.out.println("draw ellipse " + applicationState.getStart() + applicationState.getStop());
 
-        if (applicationState.getStart() != null && applicationState.getStop() != null) {
+        //if (applicationState.getStart() != null && applicationState.getStop() != null) {
             applicationState.getActivePrimaryColor();
             graphics2d.setColor(getColor(applicationState.getActivePrimaryColor()));
 
-            int width = applicationState.getStop().x - applicationState.getStart().x;
-            int height = applicationState.getStop().y - applicationState.getStart().y;
+            //int width = applicationState.getStop().x - applicationState.getStart().x;
+            int width = endPoint.x - startPoint.x;
+            //int height = applicationState.getStop().y - applicationState.getStart().y;
+            int height = endPoint.y - startPoint.y;
 
             applicationState.getActiveShapeShadingType();
 
             // outline
             if (applicationState.getActiveShapeShadingType() == ShapeShadingType.OUTLINE) {
                     System.out.println("shading type is outline");
-                    graphics2d.drawOval(applicationState.getStart().x, applicationState.getStart().y, width, height);
+                    graphics2d.drawOval(startPoint.x, startPoint.y, width, height);
             }
 
             // filled in
             if (applicationState.getActiveShapeShadingType() == ShapeShadingType.FILLED_IN) {
                 System.out.println("shading type is filled in");
-                graphics2d.fillOval(applicationState.getStart().x, applicationState.getStart().y, width, height);
+                graphics2d.fillOval(startPoint.x, startPoint.y, width, height);
             }
 
             // outline and filled in
             if (applicationState.getActiveShapeShadingType() == ShapeShadingType.OUTLINE_AND_FILLED_IN) {
                 System.out.println("shading type is outlined and filled in");
-                graphics2d.fillOval(applicationState.getStart().x, applicationState.getStart().y, width, height);
+                graphics2d.fillOval(startPoint.x, startPoint.y, width, height);
                 graphics2d.setColor(getColor(applicationState.getActiveSecondaryColor()));
-                graphics2d.drawOval(applicationState.getStart().x, applicationState.getStart().y, width, height);
+                graphics2d.drawOval(startPoint.x, startPoint.y, width, height);
             }
-        }
+        //}
 
     }
 
