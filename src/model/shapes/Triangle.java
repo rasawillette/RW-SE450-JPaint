@@ -52,17 +52,19 @@ public class Triangle implements IShape {
 
         System.out.println("draw triangle " + applicationState.getStart() + applicationState.getStop());
 
-        if (applicationState.getStart() != null && applicationState.getStop() != null) {
+        //if (applicationState.getStart() != null && applicationState.getStop() != null) {
             applicationState.getActivePrimaryColor();
             graphics2d.setColor(getColor(applicationState.getActivePrimaryColor()));
 
-            int width = applicationState.getStop().x - applicationState.getStart().x;
-            int height = applicationState.getStop().y - applicationState.getStart().y;
+            //int width = applicationState.getStop().x - applicationState.getStart().x;
+            int width = endPoint.x - startPoint.x;
+            //int height = applicationState.getStop().y - applicationState.getStart().y;
+            int height = endPoint.y - startPoint.y;
 
             applicationState.getActiveShapeShadingType();
 
-            int[] xPoints = {applicationState.getStart().x, applicationState.getStop().x, applicationState.getStart().x};
-            int[] yPoints = {applicationState.getStart().y, applicationState.getStop().y, applicationState.getStop().y};
+            int[] xPoints = {startPoint.x, endPoint.x, startPoint.x};
+            int[] yPoints = {startPoint.y, endPoint.y, endPoint.y};
             int nPoints = 3;
 
             // outline
@@ -84,7 +86,7 @@ public class Triangle implements IShape {
                 graphics2d.setColor(getColor(applicationState.getActiveSecondaryColor()));
                 graphics2d.drawPolygon(xPoints, yPoints, nPoints);
             }
-        }
+        //}
 
     }
 
