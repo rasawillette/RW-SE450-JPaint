@@ -8,7 +8,7 @@ public class ShapeList {
     public ArrayList<IShape> selectedList;
 
     public ShapeList(){
-        shapeList = new ArrayList<IShape>();;
+        shapeList = new ArrayList<IShape>();
         selectedList = new ArrayList<IShape>();
     }
 
@@ -19,7 +19,7 @@ public class ShapeList {
         shapeList.remove(shape);
     }
 
-    public ArrayList<IShape> getShapeList(IShape shape) {
+    public ArrayList<IShape> getShapeList() {
         return shapeList;
     }
 

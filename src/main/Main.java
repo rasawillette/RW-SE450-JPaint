@@ -15,12 +15,12 @@ import view.interfaces.IUiModule;
 public class Main {
     public static void main(String[] args){
 
-
-        PaintCanvas paintCanvas = new PaintCanvas();
+        ShapeList shapeList = new ShapeList();
+        PaintCanvas paintCanvas = new PaintCanvas(shapeList);
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);
         IUiModule uiModule = new Gui(guiWindow);
 
-        ShapeList shapeList = new ShapeList();
+
         ApplicationState applicationState = new ApplicationState(uiModule);
 
         MouseHandler mouseHandler = new MouseHandler(applicationState, paintCanvas, shapeList);
