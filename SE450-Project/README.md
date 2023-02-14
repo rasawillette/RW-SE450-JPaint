@@ -1,3 +1,9 @@
+Note: This directory is sprint-1 only
+
+Going forward I'm working out of the "JPaint" directory in my repository
+
+Link for sprint-2: https://github.com/rasawillette/private-RW-SE450/tree/main/JPaint/Sprint-2
+
 # private-RW-SE450
 # private-RW-SE450
 # private-RW-SE450
