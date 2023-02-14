@@ -7,10 +7,12 @@ import java.awt.*;
 
 public class Rectangle implements IShape {
 
+	ShapeParams shapeParams;
 	private Point startPoint;
 	private Point endPoint;
 	ApplicationState applicationState;
 	Graphics graphics2d;
+
 
 
 	public Rectangle(Point startPoint, Point endPoint, ApplicationState applicationState) {
