@@ -16,11 +16,13 @@ public class SelectShapeCommand implements ICommand,IUndoable {
     Point startPoint;
     Point endPoint;
 
-    public SelectShapeCommand(Point startPoint, Point endPoint, ApplicationState applicationState, PaintCanvas paintCanvas) {
+    public SelectShapeCommand(Point startPoint, Point endPoint, ApplicationState applicationState,
+                              PaintCanvas paintCanvas, ShapeList shapeList) {
         this.startPoint = startPoint;
         this.endPoint = endPoint;
         this.applicationState = applicationState;
         this.paintCanvas = paintCanvas;
+        this.shapeList = shapeList;
     }
 
 //    @Override

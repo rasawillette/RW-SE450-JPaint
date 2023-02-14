@@ -8,8 +8,12 @@ import view.gui.PaintCanvas;
 
 public class SelectMouseState implements IMouseState {
     @Override
-    public void execute(Point startPoint, Point endPoint, ApplicationState applicationState, PaintCanvas paintCanvas, ShapeList shapeList) {
-        SelectShapeCommand selectShapeCommand = new SelectShapeCommand(startPoint, endPoint, applicationState, paintCanvas);
+    public void execute(Point startPoint, Point endPoint, ApplicationState applicationState,
+                        PaintCanvas paintCanvas, ShapeList shapeList) {
+
+        SelectShapeCommand selectShapeCommand = new SelectShapeCommand(startPoint, endPoint, applicationState,
+                paintCanvas, shapeList);
+
         selectShapeCommand.execute();
     }
 }

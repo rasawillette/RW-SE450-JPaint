@@ -22,7 +22,8 @@ public class DrawShapeCommand implements ICommand, IUndoable {
     Point startPoint;
     Point endPoint;
 
-    public DrawShapeCommand(Point startPoint, Point endPoint, ApplicationState applicationState, PaintCanvas paintCanvas,ShapeList shapeList){
+    public DrawShapeCommand(Point startPoint, Point endPoint, ApplicationState applicationState,
+                            PaintCanvas paintCanvas,ShapeList shapeList){
         this.startPoint = startPoint;
         this.endPoint = endPoint;
         this.applicationState = applicationState;

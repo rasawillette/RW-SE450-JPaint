@@ -9,9 +9,12 @@ import view.gui.PaintCanvas;
 public class DrawMouseState implements IMouseState {
 
     @Override
-    public void execute(Point startPoint, Point endPoint, ApplicationState applicationState, PaintCanvas paintCanvas, ShapeList shapeList) {
-        //shapeList.removeAllSelectedShapes();
-        DrawShapeCommand drawShapeCommand = new DrawShapeCommand(startPoint, endPoint, applicationState, paintCanvas, shapeList);
+    public void execute(Point startPoint, Point endPoint, ApplicationState applicationState,
+                        PaintCanvas paintCanvas, ShapeList shapeList) {
+
+        DrawShapeCommand drawShapeCommand = new DrawShapeCommand(startPoint, endPoint, applicationState,
+                paintCanvas, shapeList);
+
         drawShapeCommand.execute();
     }
 }
