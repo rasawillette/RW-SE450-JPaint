@@ -2,10 +2,8 @@ package model.commands;
 
 import model.interfaces.IShape;
 import model.persistence.ApplicationState;
+import model.shapes.*;
 import model.shapes.Point;
-import model.shapes.ShapeFactory;
-import model.shapes.ShapeList;
-import model.shapes.ShapeType;
 import view.gui.PaintCanvas;
 
 import java.awt.*;
@@ -13,6 +11,7 @@ import java.awt.*;
 public class DrawShapeCommand implements ICommand, IUndoable {
 
     Graphics2D graphics2d;
+    ShapeParams shapeParams;
     ApplicationState applicationState;
     IShape newShape;
     ShapeList shapeList;
@@ -22,19 +21,19 @@ public class DrawShapeCommand implements ICommand, IUndoable {
     Point startPoint;
     Point endPoint;
 
-    public DrawShapeCommand(Point startPoint, Point endPoint, ApplicationState applicationState,
-                            PaintCanvas paintCanvas,ShapeList shapeList){
-        this.startPoint = startPoint;
-        this.endPoint = endPoint;
-        this.applicationState = applicationState;
+    public DrawShapeCommand(ShapeParams shapeParams, PaintCanvas paintCanvas,ShapeList shapeList){
+        //this.startPoint = startPoint;
+        //this.endPoint = endPoint;
+        this.shapeParams = shapeParams;
+        //this.applicationState = applicationState;
         this.paintCanvas = paintCanvas;
         this.shapeList = shapeList;
     }
 
     @Override
     public void execute() {
-        shape = applicationState.getActiveShapeType();
-        newShape = ShapeFactory.getShape(startPoint, endPoint, applicationState);
+        //shape = shapeParams.getShapeType(); //applicationState.getActiveShapeType();
+        newShape = ShapeFactory.getShape(shapeParams);
         //newShape.draw(paintCanvas.getGraphics2D());
         CommandHistory.add(this);
         shapeList.addShape(newShape);

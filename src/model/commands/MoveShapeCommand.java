@@ -4,6 +4,7 @@ import model.interfaces.IShape;
 import model.persistence.ApplicationState;
 import model.shapes.Point;
 import model.shapes.ShapeList;
+import model.shapes.ShapeParams;
 import model.shapes.ShapeType;
 import view.gui.PaintCanvas;
 
@@ -12,6 +13,7 @@ import java.awt.*;
 public class MoveShapeCommand implements ICommand,IUndoable {
 
     Graphics2D graphics2d;
+    ShapeParams shapeParams;
     ApplicationState applicationState;
     IShape newShape;
     ShapeList shapeList;
@@ -25,11 +27,11 @@ public class MoveShapeCommand implements ICommand,IUndoable {
     int delta_y;
 
 
-    public MoveShapeCommand(Point startPoint, Point endPoint, ApplicationState applicationState,
-                            PaintCanvas paintCanvas, ShapeList shapeList) {
-        this.startPoint = startPoint;
-        this.endPoint = endPoint;
-        this.applicationState = applicationState;
+    public MoveShapeCommand(ShapeParams shapeParams, PaintCanvas paintCanvas, ShapeList shapeList) {
+        //this.startPoint = startPoint;
+        //this.endPoint = endPoint;
+        //this.applicationState = applicationState;
+        this.shapeParams = shapeParams;
         this.paintCanvas = paintCanvas;
         this.shapeList = shapeList;
     }

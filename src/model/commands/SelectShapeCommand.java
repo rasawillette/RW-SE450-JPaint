@@ -4,11 +4,13 @@ import model.interfaces.IShape;
 import model.persistence.ApplicationState;
 import model.shapes.Point;
 import model.shapes.ShapeList;
+import model.shapes.ShapeParams;
 import view.gui.PaintCanvas;
 
 public class SelectShapeCommand implements ICommand,IUndoable {
 
     ApplicationState applicationState;
+    ShapeParams shapeParams;
     IShape newShape;
     ShapeList shapeList;
     PaintCanvas paintCanvas;
@@ -16,11 +18,11 @@ public class SelectShapeCommand implements ICommand,IUndoable {
     Point startPoint;
     Point endPoint;
 
-    public SelectShapeCommand(Point startPoint, Point endPoint, ApplicationState applicationState,
-                              PaintCanvas paintCanvas, ShapeList shapeList) {
-        this.startPoint = startPoint;
-        this.endPoint = endPoint;
-        this.applicationState = applicationState;
+    public SelectShapeCommand(ShapeParams shapeParams, PaintCanvas paintCanvas, ShapeList shapeList) {
+        //this.startPoint = startPoint;
+        //this.endPoint = endPoint;
+        //this.applicationState = applicationState;
+        this.shapeParams = shapeParams;
         this.paintCanvas = paintCanvas;
         this.shapeList = shapeList;
     }
