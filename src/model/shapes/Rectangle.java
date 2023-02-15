@@ -15,10 +15,11 @@ public class Rectangle implements IShape {
 
 
 
-	public Rectangle(Point startPoint, Point endPoint, ApplicationState applicationState) {
-		this.startPoint = startPoint;
-		this.endPoint = endPoint;
-		this.setApplicationState(applicationState);
+	public Rectangle(ShapeParams shapeParams) {
+		//this.startPoint = startPoint;
+		//this.endPoint = endPoint;
+		this.shapeParams = shapeParams;
+		//this.setApplicationState(applicationState);
 	}
 
 

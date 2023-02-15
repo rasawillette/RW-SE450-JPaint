@@ -8,14 +8,16 @@ import java.awt.*;
 
 public class Triangle implements IShape {
 
+    ShapeParams shapeParams;
     Point startPoint;
     Point endPoint;
     ApplicationState applicationState;
 
-    public Triangle(Point startPoint, Point endPoint, ApplicationState applicationState) {
-        this.startPoint = startPoint;
-        this.endPoint = endPoint;
-        this.applicationState = applicationState;
+    public Triangle(ShapeParams shapeParams) {
+        //this.startPoint = startPoint;
+        //this.endPoint = endPoint;
+        //this.applicationState = applicationState;
+        this.shapeParams = shapeParams;
     }
 
 

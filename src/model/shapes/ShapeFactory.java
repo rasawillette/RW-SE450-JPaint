@@ -11,29 +11,47 @@ public class ShapeFactory {
     private ShapeFactory(){};
 
     //use getShape to get the object
-    public static IShape getShape(Point startPoint, Point endPoint, ApplicationState applicationState){
+    public static IShape getShape(ShapeParams shapeParams) {
 
         IShape shape = null;
-        ShapeType shapeType = applicationState.getActiveShapeType();
+        ShapeType shapeType = shapeParams.getShapeType();
         System.out.println("print shape type: " + shapeType);
 
-        if (shapeType != null) {
-
-            switch (shapeType){
-
-                case RECTANGLE:
-                    shape = new Rectangle(startPoint, endPoint, applicationState);
-                    return shape;
-
-                case ELLIPSE:
-                    shape = new Ellipse(startPoint, endPoint, applicationState);
-                    return shape;
-
-                case TRIANGLE:
-                    shape = new Triangle(startPoint, endPoint, applicationState);
-                    return shape;
-            }
+        if (shapeType == null) {
+            return null;
         }
+
+        if (shapeParams.getShapeType().equals(ShapeType.RECTANGLE)) {
+            shape = new Rectangle(shapeParams);
+        }
+
+        if (shapeParams.getShapeType().equals(ShapeType.TRIANGLE)) {
+            shape = new Triangle(shapeParams);
+        }
+
+        if (shapeParams.getShapeType().equals(ShapeType.ELLIPSE)) {
+            shape = new Ellipse(shapeParams);
+        }
+
+        return shape;
+
+//
+//            switch (shapeType){
+//
+//                case RECTANGLE:
+//                    shape = new Rectangle(shapeParams, applicationState);
+//                    return shape;
+//
+//                case ELLIPSE:
+//                    shape = new Ellipse(startPoint, endPoint, applicationState);
+//                    return shape;
+//
+//                case TRIANGLE:
+//                    shape = new Triangle(startPoint, endPoint, applicationState);
+//                    return shape;
+//            }
+    //
+        // }
         /*
         switch (shapeType){
 
@@ -51,8 +69,8 @@ public class ShapeFactory {
         }
         */
 
-        return shape;
-    }
+        //return shape;
+    //}
 
 
 
@@ -77,4 +95,6 @@ public class ShapeFactory {
     }
 
      */
+    }
 }
+

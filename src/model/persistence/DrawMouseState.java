@@ -2,19 +2,17 @@ package model.persistence;
 
 import model.commands.DrawShapeCommand;
 import model.interfaces.IMouseState;
-import model.shapes.Point;
 import model.shapes.ShapeList;
+import model.shapes.ShapeParams;
 import view.gui.PaintCanvas;
 
 public class DrawMouseState implements IMouseState {
 
     @Override
-    public void execute(Point startPoint, Point endPoint, ApplicationState applicationState,
-                        PaintCanvas paintCanvas, ShapeList shapeList) {
+    public void execute(ShapeParams shapeParams, PaintCanvas paintCanvas, ShapeList shapeList) {
 
 
-        DrawShapeCommand drawShapeCommand = new DrawShapeCommand(startPoint, endPoint, applicationState,
-                paintCanvas, shapeList);
+        DrawShapeCommand drawShapeCommand = new DrawShapeCommand(shapeParams, paintCanvas, shapeList);
 
         drawShapeCommand.execute();
     }

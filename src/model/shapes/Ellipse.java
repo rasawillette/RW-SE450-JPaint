@@ -7,15 +7,17 @@ import java.awt.*;
 
 public class Ellipse implements IShape {
 
+    ShapeParams shapeParams;
     Point startPoint;
     Point endPoint;
     ApplicationState applicationState;
 
 
-    public Ellipse(Point startPoint, Point endPoint, ApplicationState applicationState) {
-        this.startPoint = startPoint;
-        this.endPoint = endPoint;
-        this.applicationState = applicationState;
+    public Ellipse(ShapeParams shapeParams) {
+        //this.startPoint = startPoint;
+        //this.endPoint = endPoint;
+        //this.applicationState = applicationState;
+        this.shapeParams = shapeParams;
     }
 
     public Color getColor(ShapeColor shapeColor) {
