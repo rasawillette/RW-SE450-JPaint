@@ -40,5 +40,7 @@ public interface IShape {
     ShapeColor getSecondaryColor();
     ShapeShadingType getShapeShadingType();
 
-    boolean containsPoint(int x, int y);
+    Boolean checkCoordinates(Point startPoint,Point endPoint);
+
+    void updateMove(int deltaX, int deltaY);
 }

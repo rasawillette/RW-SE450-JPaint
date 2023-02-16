@@ -4,6 +4,7 @@ import model.MouseMode;
 import model.interfaces.IMouseState;
 import model.shapes.Point;
 import model.shapes.ShapeList;
+import model.shapes.ShapeParams;
 import view.gui.PaintCanvas;
 
 import java.awt.event.MouseEvent;
@@ -16,6 +17,7 @@ public class MouseHandler implements MouseListener {
     public Point endPoint;
 
     //IGuiWindow guiWindow;
+    ShapeParams shapeParams;
     ApplicationState applicationState;
     PaintCanvas paintCanvas;
     ShapeList shapeList;
@@ -33,42 +35,51 @@ public class MouseHandler implements MouseListener {
     // mouse pressed
     @Override
     public void mousePressed(MouseEvent e) {
-        startPoint = new Point();
-        startPoint.x = e.getX();
-        startPoint.y = e.getY();
-        applicationState.setStart(startPoint);
+        shapeParams = new ShapeParams();
+        startPoint = new Point(e.getX(),e.getY());
+        //startPoint.x = e.getX();
+        //startPoint.y = e.getY();
+        shapeParams.setStartPoint(startPoint);
+        //applicationState.setStart(startPoint);
         System.out.println("mouse pressed" + startPoint.x + " " + startPoint.y);
     }
 
     // mouse released
     @Override
     public void mouseReleased(MouseEvent e) {
-        endPoint = new Point();
-        endPoint.x = e.getX();
-        endPoint.y = e.getY();
-        applicationState.setStop(endPoint);
+
+        endPoint = new Point(e.getX(),e.getY());
+        //endPoint.x = e.getX();
+        //endPoint.y = e.getY();
+        shapeParams.setEndPoint(endPoint);
+        shapeParams.setPrimaryColor(applicationState.getActivePrimaryColor());
+        shapeParams.setSecondaryColor(applicationState.getActiveSecondaryColor());
+        shapeParams.setShadingType(applicationState.getActiveShapeShadingType());
+        shapeParams.setShapeType(applicationState.getActiveShapeType());
+
+        //applicationState.setStop(endPoint);
 
         // calculate height
-        int height = (int) Math.abs(endPoint.y- startPoint.y);
+        //int height = (int) Math.abs(endPoint.y- startPoint.y);
         // calculate width
-        int width = (int) Math.abs(endPoint.x- startPoint.x);
+        //int width = (int) Math.abs(endPoint.x- startPoint.x);
 
-        System.out.println("mouse released" + height + " " + width);
+        //System.out.println("mouse released" + height + " " + width);
         e.getComponent().repaint();
 
         if (applicationState.getActiveMouseMode().equals(MouseMode.DRAW)) {
             mouseState = new DrawMouseState();
-            mouseState.execute(startPoint,endPoint,applicationState,paintCanvas,shapeList);
+            mouseState.execute(shapeParams,paintCanvas,shapeList);
         }
 
-        else if (applicationState.getActiveMouseMode().equals(MouseMode.SELECT)) {
+        if (applicationState.getActiveMouseMode().equals(MouseMode.SELECT)) {
             mouseState = new SelectMouseState();
-            mouseState.execute(startPoint,endPoint,applicationState,paintCanvas,shapeList);
+            mouseState.execute(shapeParams,paintCanvas,shapeList);
         }
 
-        else if(applicationState.getActiveMouseMode().equals(MouseMode.MOVE)){
-            //mouseState = new MoveMouseState();
-            //mouseState.execute(startPoint,endPoint,applicationState,paintCanvas,shapeList);
+        if(applicationState.getActiveMouseMode().equals(MouseMode.MOVE)){
+            mouseState = new MoveMouseState();
+            mouseState.execute(shapeParams,paintCanvas,shapeList);
         }
     }
 

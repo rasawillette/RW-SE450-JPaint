@@ -7,7 +7,7 @@ import model.shapes.ShapeList;
 import model.shapes.ShapeParams;
 import view.gui.PaintCanvas;
 
-public class SelectShapeCommand implements ICommand,IUndoable {
+public class SelectShapeCommand implements ICommand {
 
     ApplicationState applicationState;
     ShapeParams shapeParams;
@@ -17,6 +17,8 @@ public class SelectShapeCommand implements ICommand,IUndoable {
 
     Point startPoint;
     Point endPoint;
+
+    int minX, minY;
 
     public SelectShapeCommand(ShapeParams shapeParams, PaintCanvas paintCanvas, ShapeList shapeList) {
         //this.startPoint = startPoint;
@@ -29,10 +31,29 @@ public class SelectShapeCommand implements ICommand,IUndoable {
 
 //    @Override
     public void execute() {
-//
-//        for (IShape shape : shapeList.getShapeList(newShape)) {
-//            paintCanvas.update();
-//            System.out.println("selected command " + newShape.getStartPoint() + newShape.getEndPoint());
+        //shapeList.removeAllSelectedShapes();
+        System.out.println("print 1");
+
+        for (IShape shape : shapeList.getShapeList()) {
+            paintCanvas.update();
+            // define X and Y for shape i
+            //start = shape.getStartPoint();
+            //stop = shape.getEndPoint();
+
+            //System.out.println("selected shape list : " + shapeList.getShapeList());
+            System.out.println("print for loop");
+            // System.out.println("selected command " + newShape.getStartPoint() + newShape.getEndPoint());
+
+            if (shape.checkCoordinates(startPoint, endPoint)) {
+                System.out.println("print if 1");
+
+                if(!shapeList.getSelectedList().contains(shape)){
+                    System.out.println("print if 2");
+                    shapeList.addSelectedShape(shape);
+                }
+            }
+            paintCanvas.update();
+            System.out.println("selected shape list : " + shapeList.getShapeList());
 //
 //            //Graphics2D g = paintCanvas.getGraphics2D();
 //
@@ -58,15 +79,6 @@ public class SelectShapeCommand implements ICommand,IUndoable {
 //            return;
 //        }
 //        shapeList.getSelectedList();
-    }
-
-    @Override
-    public void undo() {
-        // nothing
-    }
-
-    @Override
-    public void redo() {
-        // nothing
+        }
     }
 }

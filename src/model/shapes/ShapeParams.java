@@ -28,15 +28,15 @@ public class ShapeParams {
     }
 
     public void setStartPoint(Point startPoint) {
-        startPoint = startPoint;
+        this.startPoint = startPoint;
     }
 
     public Point getEndPoint() {
         return endPoint;
     }
 
-    public void setEndPoint(Point end_Point) {
-        endPoint = endPoint;
+    public void setEndPoint(Point endPoint) {
+        this.endPoint = endPoint;
     }
 
     ShapeColor primaryColor;
