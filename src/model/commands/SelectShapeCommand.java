@@ -13,6 +13,8 @@ public class SelectShapeCommand implements ICommand {
     ShapeParams shapeParams;
     IShape newShape;
     ShapeList shapeList;
+    ShapeList selectedList;
+
     PaintCanvas paintCanvas;
 
     Point startPoint;
@@ -29,7 +31,7 @@ public class SelectShapeCommand implements ICommand {
         this.shapeList = shapeList;
     }
 
-//    @Override
+    @Override
     public void execute() {
         //shapeList.removeAllSelectedShapes();
         System.out.println("print 1");
@@ -46,14 +48,15 @@ public class SelectShapeCommand implements ICommand {
 
             if (shape.checkCoordinates(startPoint, endPoint)) {
                 System.out.println("print if 1");
+                shapeList.addSelectedShape(shape);
 
-                if(!shapeList.getSelectedList().contains(shape)){
-                    System.out.println("print if 2");
-                    shapeList.addSelectedShape(shape);
-                }
+//                if(!shapeList.getSelectedList().contains(shape)){
+//                    System.out.println("print if 2");
+//                    //shapeList.addSelectedShape(shape);
+//                }
             }
             paintCanvas.update();
-            System.out.println("selected shape list : " + shapeList.getShapeList());
+            System.out.println("selected shape list : " + selectedList.getSelectedList());
 //
 //            //Graphics2D g = paintCanvas.getGraphics2D();
 //

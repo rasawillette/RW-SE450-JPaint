@@ -79,7 +79,7 @@ public class Rectangle implements IShape {
 	@Override
 	public void draw(Graphics2D graphics2d) {
 
-		System.out.println("draw rectangle " + shapeParams.getStartPoint() + shapeParams.getEndPoint());
+		//System.out.println("draw rectangle " + shapeParams.getStartPoint() + shapeParams.getEndPoint());
 
 		// if (applicationState.getStart() != null && applicationState.getStop() != null) {
 		shapeParams.getPrimaryColor();
@@ -101,13 +101,13 @@ public class Rectangle implements IShape {
 
 		// filled in
 		if (shapeParams.getShadingType() == ShapeShadingType.FILLED_IN) {
-			System.out.println("shading type is filled in");
+			//System.out.println("shading type is filled in");
 			graphics2d.fillRect(startPoint.x, startPoint.y, width, height);
 		}
 
 		// outline and filled in
 		if (shapeParams.getShadingType() == ShapeShadingType.OUTLINE_AND_FILLED_IN) {
-			System.out.println("shading type is outlined and filled in");
+			//System.out.println("shading type is outlined and filled in");
 			graphics2d.fillRect(startPoint.x, startPoint.y, width, height);
 			graphics2d.setColor(getColor(shapeParams.getSecondaryColor()));
 			graphics2d.drawRect(startPoint.x, startPoint.y, width, height);
@@ -218,9 +218,13 @@ public class Rectangle implements IShape {
 		int max_y_b = Math.max(startPoint.getY(), endPoint.getY());
 
 		return ((minX < max_x_b) && (maxX > min_x_b ) && (minY < max_y_b) && (maxY > min_y_b));
+		// ^ this moves everything, doesn't move anything without !
 
 		//return ((minX > min_x_b) && (maxX < max_x_b ) && (minY > min_y_b) && (maxY < max_y_b));
+		// ^ this doesn't move anything
+
 		//return ((minX < min_x_b) && (maxX > max_x_b ) && (minY < min_y_b) && (maxY > max_y_b));
+		// ^ this doesn't move anything either
 
 	}
 

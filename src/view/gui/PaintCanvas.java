@@ -3,6 +3,7 @@ package view.gui;
 import model.interfaces.IShape;
 import model.persistence.ApplicationState;
 import model.shapes.ShapeList;
+import model.shapes.ShapeParams;
 import view.interfaces.IPaintCanvas;
 
 import javax.swing.*;
@@ -13,6 +14,7 @@ public class PaintCanvas extends JComponent implements IPaintCanvas {
 
     ApplicationState applicationState;
     ShapeList shapeList;
+    ShapeParams shapeParams;
 
     public PaintCanvas(ShapeList shapeList) {
         this.shapeList = shapeList;
