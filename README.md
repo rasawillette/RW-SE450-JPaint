@@ -64,9 +64,9 @@ My 4 Design Patterns:
 - Classes: MouseHandler, DrawMouseState, SelectMouseState, MoveMouseState
 - Interfaces: IMouseState
 
-3. ****
-- Classes: 
-- Interfaces: 
+3. **Null Object**
+- Classes: NullShape
+- Interfaces: IShape
 
 2. ****
 - Classes: 

@@ -1,9 +1,13 @@
 package controller;
 
+import model.commands.CopyCommand;
+import model.commands.DeleteCommand;
 import model.commands.RedoCommand;
 import model.commands.UndoCommand;
 import model.interfaces.IApplicationState;
+import model.shapes.ShapeList;
 import view.EventName;
+import view.gui.PaintCanvas;
 import view.interfaces.IUiModule;
 
 
@@ -11,6 +15,9 @@ public class JPaintController implements IJPaintController {
     //instance variables
     private final IUiModule uiModule; //view
     private final IApplicationState applicationState; //model
+
+    ShapeList shapeList;
+    PaintCanvas paintCanvas;
 
     //constructor
     public JPaintController(IUiModule uiModule, IApplicationState applicationState) {
@@ -35,6 +42,9 @@ public class JPaintController implements IJPaintController {
 
         //uiModule.addEvent(EventName.REDO, () -> CommandHistory.redo());
         uiModule.addEvent(EventName.REDO, () -> new RedoCommand().execute());
+
+        uiModule.addEvent(EventName.COPY, () -> new CopyCommand(shapeList).execute());
+        uiModule.addEvent(EventName.DELETE, () -> new DeleteCommand(shapeList, paintCanvas).execute());
 
     }
 }
