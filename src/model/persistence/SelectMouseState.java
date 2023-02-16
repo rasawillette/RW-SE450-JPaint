@@ -9,9 +9,8 @@ import view.gui.PaintCanvas;
 public class SelectMouseState implements IMouseState {
     @Override
     public void execute(ShapeParams shapeParams, PaintCanvas paintCanvas, ShapeList shapeList) {
-
         SelectShapeCommand selectShapeCommand = new SelectShapeCommand(shapeParams, paintCanvas, shapeList);
-        System.out.println("print calling select shape command execute");
+        //System.out.println("print calling select shape command execute");
         selectShapeCommand.execute();
     }
 }

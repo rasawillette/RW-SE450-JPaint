@@ -31,21 +31,17 @@ public class ShapeList {
         System.out.println("added to selected shape list");
     }
 
-//    public void removeSelectedShape(IShape shape){
-//        selectedList.remove(shape);
-//    }
-//    public void removeAllSelectedShapes(){
-//        selectedList.clear();
-//        System.out.println("cleared selected shape list");
-//    }
+    public void removeSelectedShape(IShape shape){
+        selectedList.remove(shape);
+    }
 
     public ArrayList<IShape> getSelectedList(){
         return selectedList;
     }
 
-//    public boolean contains(IShape shape) {
-//        return  shapeList.contains(shape);
-//    }
+    public void removeAllSelectedShapes(){
+        selectedList.clear();
+    }
 
     public void addCopiedShape(IShape shape){
         copiedList.add(shape);
@@ -54,5 +50,14 @@ public class ShapeList {
     public ArrayList<IShape> getCopiedList(){
         return copiedList;
     }
+
+    public void removeCopiedList(){
+        copiedList.clear();
+    }
+
+    public void removeAllCopiedShapes(){
+        copiedList.clear();
+    }
+
 
 }

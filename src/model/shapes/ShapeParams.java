@@ -20,8 +20,8 @@ public class ShapeParams {
         this.width = width;
     }
 
-    Point startPoint;
-    Point endPoint;
+    public Point startPoint;
+    public Point endPoint;
 
     public Point getStartPoint() {
         return startPoint;

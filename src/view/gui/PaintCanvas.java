@@ -52,9 +52,9 @@ public class PaintCanvas extends JComponent implements IPaintCanvas {
 
         //System.out.println("paint " + applicationState.getActiveShapeType());
 
-        if (applicationState.getActiveShapeType() == null) {
-            return;
-        }
+//        if (applicationState.getActiveShapeType() == null) {
+//            return;
+//        }
 
         /*
         switch (applicationState.getActiveShapeType()) {

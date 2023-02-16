@@ -11,9 +11,10 @@ public class DrawMouseState implements IMouseState {
     @Override
     public void execute(ShapeParams shapeParams, PaintCanvas paintCanvas, ShapeList shapeList) {
 
+        shapeList.removeAllSelectedShapes();
+        shapeList.removeAllCopiedShapes();
 
         DrawShapeCommand drawShapeCommand = new DrawShapeCommand(shapeParams, paintCanvas, shapeList);
-
         drawShapeCommand.execute();
     }
 }

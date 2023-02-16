@@ -11,8 +11,6 @@ import java.awt.*;
 public interface IShape {
     void draw(Graphics2D g);
 
-    void selectDraw(Graphics2D g);
-
     // if not overriding all methods in the shape class files, then remove from interface
 
     void setStartPoint(int x, int y);
@@ -43,4 +41,6 @@ public interface IShape {
     Boolean checkCoordinates(Point startPoint,Point endPoint);
 
     void updateMove(int deltaX, int deltaY);
+
+    void selectOutline(Graphics2D g);
 }

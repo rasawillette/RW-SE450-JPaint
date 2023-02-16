@@ -27,6 +27,11 @@ public class Rectangle implements IShape {
 		minY = Math.min(startPoint.getY(), endPoint.getY());
 		maxX = Math.max(startPoint.getX(), endPoint.getX());
 		maxY = Math.max(startPoint.getY(), endPoint.getY());
+
+		getWidth();
+		getHeight();
+		shapeParams.setHeight(getHeight());
+		shapeParams.setWidth(getWidth());
 	}
 
 
@@ -114,16 +119,6 @@ public class Rectangle implements IShape {
 		}
 
 
-	}
-
-
-	public void selectDraw(Graphics2D g) {
-		Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1, new float[]{9}, 0);
-		g.setStroke(stroke);
-		g.setColor(Color.BLACK);
-		int width = applicationState.getStop().x - applicationState.getStart().x;
-		int height = applicationState.getStop().y - applicationState.getStart().y;
-		g.drawRect(applicationState.getStart().x, applicationState.getStart().y, width, height);
 	}
 
 	@Override
@@ -234,6 +229,8 @@ public class Rectangle implements IShape {
 		maxX = maxX + deltaX;
 		maxY = maxY + deltaY;
 
+		//shapeParams.startPoint.setX(minX);
+
 		startPoint.setX(minX);
 		startPoint.setY(minY);
 		endPoint.setX(maxX);
@@ -241,6 +238,16 @@ public class Rectangle implements IShape {
 
 		shapeParams.setStartPoint(startPoint);
 		shapeParams.setEndPoint(endPoint);
+	}
+
+	@Override
+	public void selectOutline(Graphics2D g) {
+		Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1, new float[]{9}, 0);
+		g.setStroke(stroke);
+		g.setColor(Color.BLACK);
+		int width = applicationState.getStop().x - applicationState.getStart().x;
+		int height = applicationState.getStop().y - applicationState.getStart().y;
+		g.drawRect(applicationState.getStart().x, applicationState.getStart().y, width, height);
 	}
 
 }

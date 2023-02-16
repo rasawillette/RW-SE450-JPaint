@@ -53,17 +53,14 @@ public class MoveShapeCommand implements ICommand,IUndoable {
         for (IShape shape : shapeList.getSelectedList()) {
 
             if(shapeList.getShapeList().contains(shape)) {
-
                 shapeList.removeShape(shape);
                 shape.updateMove(deltaX, deltaY);
                 shapeList.addShape(shape);
                 tempShapeMoveList.add(shape);
             }
-//                    System.out.println(delta_x + "::" + delta_y);
         }
         paintCanvas.update();
         CommandHistory.add(this);
-
     }
 
     @Override

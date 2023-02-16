@@ -13,6 +13,8 @@ public class CopyCommand implements ICommand{
 
     @Override
     public void execute() {
+        shapeList.removeCopiedList();
+
         for (IShape shape : shapeList.getSelectedList()){
             shapeList.addCopiedShape(shape);
         }

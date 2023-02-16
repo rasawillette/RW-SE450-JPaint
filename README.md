@@ -18,7 +18,7 @@ Bugs:
 1. Can only draw the rectangle from left to right, not right to left
 2. Drawn rectangles will not stay on the canvas 
 
-I've been struggling with this assignment and spent a lot of time trying to figure out undo and redo (didn't work). 
+Notes: I've been struggling with this assignment and spent a lot of time trying to figure out undo and redo (didn't work). 
 
 ### 2/7 Sprint 2: 
 
@@ -55,6 +55,9 @@ Implementations:
 Bugs:
 1. 
 
+Notes: 
+
+
 My 4 Design Patterns:
 1. **Command**
 - Classes: UndoCommand, RedoCommand, DrawShapeCommand, SelectShapeCommand, MoveShapeCommand
@@ -64,11 +67,10 @@ My 4 Design Patterns:
 - Classes: MouseHandler, DrawMouseState, SelectMouseState, MoveMouseState
 - Interfaces: IMouseState
 
-3. ****
-- Classes: 
-- Interfaces: 
+3. **Strategy**
+- Classes: Rectangle, Ellipse, Triangle
+- Interfaces: IShape
 
-2. ****
-- Classes: 
-- Interfaces: 
-
+4. **Proxy**
+- Classes: ShapeOutline, ShapeOutlineProxy, RectangleOutline, TriangleOutline, EllipseOutline
+- Interfaces: IProxyOutline
