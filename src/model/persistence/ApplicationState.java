@@ -37,7 +37,6 @@ public class ApplicationState implements IApplicationState {
     public void setActiveShape() {
         activeShapeType = uiModule.getDialogResponse(dialogProvider.getChooseShapeDialog());
         System.out.println("application state " + activeShapeType );
-
         Component.activeShapeType = activeShapeType;
     }
 
@@ -63,8 +62,6 @@ public class ApplicationState implements IApplicationState {
     public void setActiveStartAndEndPointMode() {
         System.out.println("set active start and end point mode");
         activeMouseMode = uiModule.getDialogResponse(dialogProvider.getChooseStartAndEndPointModeDialog());
-        //Component.activeMouseMode = activeMouseMode;
-        //uiModule.addEvent();
     }
 
     @Override

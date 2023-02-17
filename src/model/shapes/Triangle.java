@@ -3,6 +3,7 @@ package model.shapes;
 
 import model.interfaces.IShape;
 import model.persistence.ApplicationState;
+import model.proxy.ShapeOutlineProxy;
 
 import java.awt.*;
 
@@ -12,13 +13,11 @@ public class Triangle implements IShape {
     Point startPoint;
     Point endPoint;
     ApplicationState applicationState;
+    Graphics2D graphics2D;
 
     int minX,minY,maxX,maxY;
 
     public Triangle(ShapeParams shapeParams) {
-        //this.startPoint = startPoint;
-        //this.endPoint = endPoint;
-        //this.applicationState = applicationState;
         this.shapeParams = shapeParams;
         this.startPoint = shapeParams.getStartPoint();
         this.endPoint = shapeParams.getEndPoint();
@@ -63,12 +62,8 @@ public class Triangle implements IShape {
 
         System.out.println("draw triangle " + shapeParams.getStartPoint() + shapeParams.getEndPoint());
 
-        //if (applicationState.getStart() != null && applicationState.getStop() != null) {
         shapeParams.getPrimaryColor();
         graphics2d.setColor(getColor(shapeParams.getPrimaryColor()));
-
-        //int width = applicationState.getStop().x - applicationState.getStart().x;
-        //int height = applicationState.getStop().y - applicationState.getStart().y;
 
         int width = shapeParams.endPoint.x - shapeParams.startPoint.x;
         int height = shapeParams.endPoint.y - shapeParams.startPoint.y;
@@ -98,18 +93,6 @@ public class Triangle implements IShape {
             graphics2d.setColor(getColor(shapeParams.getSecondaryColor()));
             graphics2d.drawPolygon(xPoints, yPoints, nPoints);
         }
-        //}
-
-    }
-
-
-    public void selectDraw(Graphics2D g) {
-        Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1, new float[]{9}, 0);
-        g.setStroke(stroke);
-        g.setColor(Color.BLACK);
-        int width = applicationState.getStop().x - applicationState.getStart().x;
-        int height = applicationState.getStop().y - applicationState.getStart().y;
-        g.drawRect(applicationState.getStart().x, applicationState.getStart().y, width, height);
     }
 
     @Override
@@ -193,15 +176,16 @@ public class Triangle implements IShape {
     }
 
     @Override
-    public Boolean checkCoordinates(Point S_point,Point E_point ) {
-        int min_x_b = Math.min(startPoint.getX(), endPoint.getX());
-        int min_y_b = Math.min(startPoint.getY(), endPoint.getY());
-        int max_x_b = Math.max(startPoint.getX(), endPoint.getX());
-        int max_y_b = Math.max(startPoint.getY(), endPoint.getY());
+    public Boolean checkCoordinates(Point start,Point end) {
+        int minX_bool = Math.min(startPoint.getX(), endPoint.getX());
+        int minY_bool = Math.min(startPoint.getY(), endPoint.getY());
+        int maxX_bool = Math.max(startPoint.getX(), endPoint.getX());
+        int maxY_bool = Math.max(startPoint.getY(), endPoint.getY());
 
-        return ((minX < max_x_b) && (maxX > min_x_b ) && (minY < max_y_b) && (maxY > min_y_b));
+        return ((minX < maxX_bool) && (maxX > minX_bool ) && (minY < maxY_bool) && (maxY > minY_bool));
     }
 
+    @Override
     public void updateMove(int deltaX, int deltaY){
         minX = minX + deltaX;
         minY = minY + deltaY;
@@ -215,5 +199,11 @@ public class Triangle implements IShape {
 
         shapeParams.setStartPoint(startPoint);
         shapeParams.setEndPoint(endPoint);
+    }
+
+    @Override
+    public void selectOutline(Graphics2D g) {
+        ShapeOutlineProxy shapeOutlineProxy = new ShapeOutlineProxy(shapeParams,graphics2D);
+        shapeOutlineProxy.drawOutline();
     }
 }

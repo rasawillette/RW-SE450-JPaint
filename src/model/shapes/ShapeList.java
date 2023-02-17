@@ -4,6 +4,7 @@ import model.interfaces.IShape;
 import java.util.ArrayList;
 
 public class ShapeList {
+
     public ArrayList<IShape> shapeList;
     public ArrayList<IShape> selectedList;
     public ArrayList<IShape> copiedList;
@@ -28,7 +29,6 @@ public class ShapeList {
 
     public void addSelectedShape(IShape shape) {
         selectedList.add(shape);
-        System.out.println("added to selected shape list");
     }
 
     public void removeSelectedShape(IShape shape){
@@ -58,6 +58,4 @@ public class ShapeList {
     public void removeAllCopiedShapes(){
         copiedList.clear();
     }
-
-
 }

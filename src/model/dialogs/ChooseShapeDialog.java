@@ -8,7 +8,6 @@ public class ChooseShapeDialog implements IDialogChoice<ShapeType> {
     private final IApplicationState applicationState;
 
     public ChooseShapeDialog(IApplicationState applicationState) {
-
         this.applicationState = applicationState;
     }
 

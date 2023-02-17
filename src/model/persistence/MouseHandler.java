@@ -49,22 +49,13 @@ public class MouseHandler implements MouseListener {
     public void mouseReleased(MouseEvent e) {
 
         endPoint = new Point(e.getX(),e.getY());
-        //endPoint.x = e.getX();
-        //endPoint.y = e.getY();
+
         shapeParams.setEndPoint(endPoint);
         shapeParams.setPrimaryColor(applicationState.getActivePrimaryColor());
         shapeParams.setSecondaryColor(applicationState.getActiveSecondaryColor());
         shapeParams.setShadingType(applicationState.getActiveShapeShadingType());
         shapeParams.setShapeType(applicationState.getActiveShapeType());
 
-        //applicationState.setStop(endPoint);
-
-        // calculate height
-        //int height = (int) Math.abs(endPoint.y- startPoint.y);
-        // calculate width
-        //int width = (int) Math.abs(endPoint.x- startPoint.x);
-
-        //System.out.println("mouse released" + height + " " + width);
         e.getComponent().repaint();
 
         if (applicationState.getActiveMouseMode().equals(MouseMode.DRAW)) {

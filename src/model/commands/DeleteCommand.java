@@ -16,7 +16,6 @@ public class DeleteCommand implements ICommand,IUndoable{
         this.shapeList = shapeList;
         this.paintCanvas = paintCanvas;
         deleteList = new ArrayList<IShape>();
-
     }
 
     @Override
@@ -27,7 +26,6 @@ public class DeleteCommand implements ICommand,IUndoable{
         }
         CommandHistory.add(this);
         paintCanvas.update();
-
     }
 
     @Override

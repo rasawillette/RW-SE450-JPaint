@@ -30,9 +30,6 @@ public class MoveShapeCommand implements ICommand,IUndoable {
 
 
     public MoveShapeCommand(ShapeParams shapeParams, PaintCanvas paintCanvas, ShapeList shapeList) {
-        //this.startPoint = startPoint;
-        //this.endPoint = endPoint;
-        //this.applicationState = applicationState;
         this.shapeParams = shapeParams;
         this.paintCanvas = paintCanvas;
         this.shapeList = shapeList;

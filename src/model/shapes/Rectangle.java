@@ -2,6 +2,7 @@ package model.shapes;
 
 import model.interfaces.IShape;
 import model.persistence.ApplicationState;
+import model.proxy.ShapeOutlineProxy;
 
 import java.awt.*;
 
@@ -11,7 +12,7 @@ public class Rectangle implements IShape {
 	private Point startPoint;
 	private Point endPoint;
 	ApplicationState applicationState;
-	Graphics graphics2d;
+	Graphics2D graphics2D;
 
 	int minX,minY,maxX,maxY;
 
@@ -83,15 +84,8 @@ public class Rectangle implements IShape {
 
 	@Override
 	public void draw(Graphics2D graphics2d) {
-
-		//System.out.println("draw rectangle " + shapeParams.getStartPoint() + shapeParams.getEndPoint());
-
-		// if (applicationState.getStart() != null && applicationState.getStop() != null) {
 		shapeParams.getPrimaryColor();
 		graphics2d.setColor(getColor(shapeParams.getPrimaryColor()));
-
-		//int width = applicationState.getStop().x - applicationState.getStart().x;
-		//int height = applicationState.getStop().y - applicationState.getStart().y;
 
 		int width = endPoint.getX() - startPoint.x;
 		int height = endPoint.y - startPoint.y;
@@ -112,13 +106,10 @@ public class Rectangle implements IShape {
 
 		// outline and filled in
 		if (shapeParams.getShadingType() == ShapeShadingType.OUTLINE_AND_FILLED_IN) {
-			//System.out.println("shading type is outlined and filled in");
 			graphics2d.fillRect(startPoint.x, startPoint.y, width, height);
 			graphics2d.setColor(getColor(shapeParams.getSecondaryColor()));
 			graphics2d.drawRect(startPoint.x, startPoint.y, width, height);
 		}
-
-
 	}
 
 	@Override
@@ -137,8 +128,6 @@ public class Rectangle implements IShape {
 	public void setShapeShadingType(ShapeShadingType shapeShadingType) {
 		//this.applicationState.setActiveShadingType() = shapeShadingType;
 	}
-
-	// confirm ^ that application state should be passed into Ellipse constructor as parameter
 
 	@Override
 	public void setPrimaryColor(ShapeColor color) {
@@ -162,12 +151,12 @@ public class Rectangle implements IShape {
 
 	@Override
 	public int getHeight() {
-		return (applicationState.getStop().y - applicationState.getStart().y);
+		return (shapeParams.getHeight());
 	}
 
 	@Override
 	public int getWidth() {
-		return (applicationState.getStop().x - applicationState.getStart().x);
+		return (shapeParams.getWidth());
 	}
 
 	@Override
@@ -206,30 +195,21 @@ public class Rectangle implements IShape {
 	}
 
 	@Override
-	public Boolean checkCoordinates(Point S_point,Point E_point ) {
-		int min_x_b = Math.min(startPoint.getX(), endPoint.getX());
-		int min_y_b = Math.min(startPoint.getY(), endPoint.getY());
-		int max_x_b = Math.max(startPoint.getX(), endPoint.getX());
-		int max_y_b = Math.max(startPoint.getY(), endPoint.getY());
+	public Boolean checkCoordinates(Point start,Point end ) {
+		int minX_bool = Math.min(startPoint.getX(), endPoint.getX());
+		int minY_bool = Math.min(startPoint.getY(), endPoint.getY());
+		int maxX_bool = Math.max(startPoint.getX(), endPoint.getX());
+		int maxY_bool = Math.max(startPoint.getY(), endPoint.getY());
 
-		return ((minX < max_x_b) && (maxX > min_x_b ) && (minY < max_y_b) && (maxY > min_y_b));
-		// ^ this moves everything, doesn't move anything without !
-
-		//return ((minX > min_x_b) && (maxX < max_x_b ) && (minY > min_y_b) && (maxY < max_y_b));
-		// ^ this doesn't move anything
-
-		//return ((minX < min_x_b) && (maxX > max_x_b ) && (minY < min_y_b) && (maxY > max_y_b));
-		// ^ this doesn't move anything either
-
+		return ((minX < maxX_bool) && (maxX > minX_bool) && (minY < maxY_bool) && (maxY > minY_bool));
 	}
 
+	@Override
 	public void updateMove(int deltaX, int deltaY){
 		minX = minX + deltaX;
 		minY = minY + deltaY;
 		maxX = maxX + deltaX;
 		maxY = maxY + deltaY;
-
-		//shapeParams.startPoint.setX(minX);
 
 		startPoint.setX(minX);
 		startPoint.setY(minY);
@@ -242,13 +222,8 @@ public class Rectangle implements IShape {
 
 	@Override
 	public void selectOutline(Graphics2D g) {
-		Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1, new float[]{9}, 0);
-		g.setStroke(stroke);
-		g.setColor(Color.BLACK);
-		int width = applicationState.getStop().x - applicationState.getStart().x;
-		int height = applicationState.getStop().y - applicationState.getStart().y;
-		g.drawRect(applicationState.getStart().x, applicationState.getStart().y, width, height);
+		ShapeOutlineProxy shapeOutlineProxy = new ShapeOutlineProxy(shapeParams,graphics2D);
+		shapeOutlineProxy.drawOutline();
 	}
-
 }
 

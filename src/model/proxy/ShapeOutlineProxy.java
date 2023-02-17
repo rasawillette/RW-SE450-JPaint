@@ -14,10 +14,8 @@ public class ShapeOutlineProxy implements IProxyOutline {
     public ShapeOutlineProxy(ShapeParams shapeParams, Graphics2D graphics2D) {
         this.shapeParams = shapeParams;
         this.graphics2D = graphics2D;
-
         shapeOutline = new ShapeOutline(shapeParams,graphics2D);
     }
-
 
     @Override
     public void drawOutline() {

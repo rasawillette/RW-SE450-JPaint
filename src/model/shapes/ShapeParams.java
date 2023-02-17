@@ -79,14 +79,14 @@ public class ShapeParams {
         this.shadingType = shadingType;
     }
 
-    boolean isSelected = false;
+    //boolean isSelected = false;
 
-    public boolean getIsSelected() {
-        return isSelected;
-    }
+//    public boolean getIsSelected() {
+//        return isSelected;
+//    }
 
-    public void setIsSelected(boolean selected) {
-        isSelected = selected;
-    }
+//    public void setIsSelected(boolean selected) {
+//        isSelected = selected;
+//    }
 
 }

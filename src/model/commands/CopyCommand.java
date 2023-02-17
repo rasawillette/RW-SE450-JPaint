@@ -18,6 +18,5 @@ public class CopyCommand implements ICommand{
         for (IShape shape : shapeList.getSelectedList()){
             shapeList.addCopiedShape(shape);
         }
-
     }
 }

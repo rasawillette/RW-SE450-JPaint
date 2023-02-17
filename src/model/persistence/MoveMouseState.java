@@ -8,7 +8,6 @@ import view.gui.PaintCanvas;
 
 public class MoveMouseState implements IMouseState {
 
-
     @Override
     public void execute(ShapeParams shapeParams, PaintCanvas paintCanvas, ShapeList shapeList) {
         MoveShapeCommand moveShapeCommand = new MoveShapeCommand(shapeParams, paintCanvas, shapeList);

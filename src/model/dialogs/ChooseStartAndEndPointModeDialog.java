@@ -8,7 +8,6 @@ public class ChooseStartAndEndPointModeDialog implements IDialogChoice<MouseMode
     private final IApplicationState applicationState;
 
     public ChooseStartAndEndPointModeDialog(IApplicationState applicationState) {
-
         this.applicationState = applicationState;
     }
 

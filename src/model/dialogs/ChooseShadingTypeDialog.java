@@ -8,7 +8,6 @@ public class ChooseShadingTypeDialog implements IDialogChoice<ShapeShadingType> 
     private final IApplicationState applicationState;
 
     public ChooseShadingTypeDialog(IApplicationState applicationState) {
-
         this.applicationState = applicationState;
     }
 
