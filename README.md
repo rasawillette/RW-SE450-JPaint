@@ -6,6 +6,8 @@ Link to sprint 1 (main branch): https://github.com/rasawillette/private-RW-SE450
 
 Link to sprint 2 (450-sprint-2 branch): https://github.com/rasawillette/private-RW-SE450/tree/450-sprint-2
 
+Link to sprint 2 Re-Submission (sprint-2-redo): https://github.com/rasawillette/private-RW-SE450/tree/sprint-2-redo
+
 Link to sprint 3 (450-sprint-3 branch): https://github.com/rasawillette/private-RW-SE450/tree/450-sprint-3
 
 ### 1/28 - Sprint 1
@@ -30,8 +32,7 @@ Implementations:
 5. Undo/Redo
 
 Bugs:
-1. Can only draw the rectangle and ellipse from the top left to lower right, not right to left
-2. I'm still struggling with literally every single thing
+1. N/A
 
 My 2 Design Patterns:
 1. **Command**
