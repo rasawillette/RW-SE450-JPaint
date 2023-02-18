@@ -22,7 +22,8 @@ Bugs:
 
 Notes: I've been struggling with this assignment and spent a lot of time trying to figure out undo and redo (didn't work). 
 
-### 2/7 Sprint 2: 
+### 2/7 Sprint 2 & 
+### 2/17 Sprint 2 Re-Submission
 
 Implementations:
 1. Draw rectangle, ellipse, triangle
