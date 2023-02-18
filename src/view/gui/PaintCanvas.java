@@ -23,14 +23,14 @@ public class PaintCanvas extends JComponent implements IPaintCanvas {
 
     @Override
     public void paint(Graphics g) {
-        this.graphics2D = graphics2D;
+        Graphics2D graphics2d = (Graphics2D) g;
 
         for (IShape shape : shapeList.getShapeList()) {
-            shape.draw(graphics2D);
+            shape.draw(graphics2d);
             System.out.println("something");
 
             if (shapeList.getSelectedList().contains(shape)) {
-                shape.selectOutline(graphics2D);
+                shape.selectOutline(graphics2d);
             }
         }
     }

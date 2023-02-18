@@ -20,7 +20,6 @@ public class Main {
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);
         IUiModule uiModule = new Gui(guiWindow);
 
-
         ApplicationState applicationState = new ApplicationState(uiModule);
 
         MouseHandler mouseHandler = new MouseHandler(applicationState, paintCanvas, shapeList);

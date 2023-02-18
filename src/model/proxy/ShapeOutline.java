@@ -9,14 +9,14 @@ import java.awt.*;
 public class ShapeOutline implements IProxyOutline {
 
     ShapeParams shapeParams;
-    Graphics2D graphics2D;
+    Graphics2D graphics2d;
 
     RectangleOutline rectangleOutline = new RectangleOutline();
     EllipseOutline ellipseOutline = new EllipseOutline();;
     TriangleOutline triangleOutline = new TriangleOutline();
 
     public ShapeOutline(ShapeParams shapeParams,Graphics2D graphics2D){
-        this.graphics2D = graphics2D;
+        this.graphics2d = graphics2D;
         this.shapeParams = shapeParams;
     }
 
@@ -24,15 +24,15 @@ public class ShapeOutline implements IProxyOutline {
     public void drawOutline() {
 
         if (shapeParams.getShapeType().equals(ShapeType.RECTANGLE)){
-            rectangleOutline.draw(shapeParams,graphics2D);
+            rectangleOutline.draw(shapeParams,graphics2d);
         }
 
         if (shapeParams.getShapeType().equals(ShapeType.TRIANGLE)){
-            triangleOutline.draw(shapeParams,graphics2D);
+            triangleOutline.draw(shapeParams,graphics2d);
         }
 
         if (shapeParams.getShapeType().equals(ShapeType.ELLIPSE)){
-            ellipseOutline.draw(shapeParams,graphics2D);
+            ellipseOutline.draw(shapeParams,graphics2d);
         }
 
     }

@@ -39,7 +39,7 @@ public class SelectShapeCommand implements ICommand {
                 shapeList.addSelectedShape(shape);
             }
             paintCanvas.update();
-            System.out.println("2 clicks select");
+            System.out.println("selected shape list : " + shapeList.getSelectedList());
         }
     }
 }

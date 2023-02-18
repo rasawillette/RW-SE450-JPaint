@@ -12,7 +12,7 @@ public class Ellipse implements IShape {
     Point startPoint;
     Point endPoint;
     ApplicationState applicationState;
-    Graphics2D graphics2D;
+    Graphics2D graphics2d;
 
     int minX,minY,maxX,maxY;
 
@@ -47,12 +47,9 @@ public class Ellipse implements IShape {
     }
 
     @Override
-    public void draw(Graphics2D graphics2d) {
-
-        System.out.println("draw ellipse " + shapeParams.getStartPoint() + shapeParams.getEndPoint());
-
+    public void draw(Graphics2D graphics2D) {
         shapeParams.getPrimaryColor();
-        graphics2d.setColor(getColor(shapeParams.getPrimaryColor()));
+        graphics2D.setColor(getColor(shapeParams.getPrimaryColor()));
 
         int width = shapeParams.endPoint.x - shapeParams.startPoint.x;
         int height = shapeParams.endPoint.y - shapeParams.startPoint.y;
@@ -61,22 +58,19 @@ public class Ellipse implements IShape {
 
         // outline
         if (shapeParams.getShadingType() == ShapeShadingType.OUTLINE) {
-            System.out.println("shading type is outline");
-            graphics2d.drawOval(startPoint.x, startPoint.y, width, height);
+            graphics2D.drawOval(startPoint.x, startPoint.y, width, height);
         }
 
         // filled in
         if (shapeParams.getShadingType() == ShapeShadingType.FILLED_IN) {
-            System.out.println("shading type is filled in");
-            graphics2d.fillOval(startPoint.x, startPoint.y, width, height);
+            graphics2D.fillOval(startPoint.x, startPoint.y, width, height);
         }
 
         // outline and filled in
         if (shapeParams.getShadingType() == ShapeShadingType.OUTLINE_AND_FILLED_IN) {
-            System.out.println("shading type is outlined and filled in");
-            graphics2d.fillOval(startPoint.x, startPoint.y, width, height);
-            graphics2d.setColor(getColor(shapeParams.getSecondaryColor()));
-            graphics2d.drawOval(startPoint.x, startPoint.y, width, height);
+            graphics2D.fillOval(startPoint.x, startPoint.y, width, height);
+            graphics2D.setColor(getColor(shapeParams.getSecondaryColor()));
+            graphics2D.drawOval(startPoint.x, startPoint.y, width, height);
         }
     }
 
@@ -159,7 +153,13 @@ public class Ellipse implements IShape {
         int maxX_bool = Math.max(startPoint.getX(), endPoint.getX());
         int maxY_bool = Math.max(startPoint.getY(), endPoint.getY());
 
-        return ((minX < maxX_bool) && (maxX > minX_bool ) && (minY < maxY_bool) && (maxY > minY_bool));
+        //return ((minX < maxX_bool) && (maxX > minX_bool ) && (minY < maxY_bool) && (maxY > minY_bool));
+
+        return minX_bool < end.getX() && maxX_bool > start.getX() && minY_bool < end.getY() && maxY_bool > start.getY();
+//		rect1.x < rect2.x + rect2.w &&
+//				rect1.x + rect1.w > rect2.x &&
+//				rect1.y < rect2.y + rect2.h &&
+//				rect1.h + rect1.y > rect2.y
     }
 
     @Override
@@ -180,7 +180,7 @@ public class Ellipse implements IShape {
 
     @Override
     public void selectOutline(Graphics2D g) {
-        ShapeOutlineProxy shapeOutlineProxy = new ShapeOutlineProxy(shapeParams,graphics2D);
+        ShapeOutlineProxy shapeOutlineProxy = new ShapeOutlineProxy(shapeParams,g);
         shapeOutlineProxy.drawOutline();
     }
 }

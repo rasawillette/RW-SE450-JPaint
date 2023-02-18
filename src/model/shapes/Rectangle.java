@@ -12,17 +12,14 @@ public class Rectangle implements IShape {
 	private Point startPoint;
 	private Point endPoint;
 	ApplicationState applicationState;
-	Graphics2D graphics2D;
+	Graphics2D graphics2d;
 
 	int minX,minY,maxX,maxY;
 
 	public Rectangle(ShapeParams shapeParams) {
-		//this.startPoint = startPoint;
-		//this.endPoint = endPoint;
 		this.shapeParams = shapeParams;
 		this.startPoint = shapeParams.getStartPoint();
 		this.endPoint = shapeParams.getEndPoint();
-		//this.setApplicationState(applicationState);
 
 		minX = Math.min(startPoint.getX(), endPoint.getX());
 		minY = Math.min(startPoint.getY(), endPoint.getY());
@@ -83,9 +80,9 @@ public class Rectangle implements IShape {
 	}
 
 	@Override
-	public void draw(Graphics2D graphics2d) {
+	public void draw(Graphics2D graphics2D) {
 		shapeParams.getPrimaryColor();
-		graphics2d.setColor(getColor(shapeParams.getPrimaryColor()));
+		graphics2D.setColor(getColor(shapeParams.getPrimaryColor()));
 
 		int width = endPoint.getX() - startPoint.x;
 		int height = endPoint.y - startPoint.y;
@@ -94,21 +91,19 @@ public class Rectangle implements IShape {
 
 		// outline
 		if (shapeParams.shadingType == ShapeShadingType.OUTLINE) {
-			System.out.println("shading type is outline");
-			graphics2d.drawRect(startPoint.x, startPoint.y, width, height);
+			graphics2D.drawRect(startPoint.x, startPoint.y, width, height);
 		}
 
 		// filled in
 		if (shapeParams.getShadingType() == ShapeShadingType.FILLED_IN) {
-			//System.out.println("shading type is filled in");
-			graphics2d.fillRect(startPoint.x, startPoint.y, width, height);
+			graphics2D.fillRect(startPoint.x, startPoint.y, width, height);
 		}
 
 		// outline and filled in
 		if (shapeParams.getShadingType() == ShapeShadingType.OUTLINE_AND_FILLED_IN) {
-			graphics2d.fillRect(startPoint.x, startPoint.y, width, height);
-			graphics2d.setColor(getColor(shapeParams.getSecondaryColor()));
-			graphics2d.drawRect(startPoint.x, startPoint.y, width, height);
+			graphics2D.fillRect(startPoint.x, startPoint.y, width, height);
+			graphics2D.setColor(getColor(shapeParams.getSecondaryColor()));
+			graphics2D.drawRect(startPoint.x, startPoint.y, width, height);
 		}
 	}
 
@@ -201,7 +196,13 @@ public class Rectangle implements IShape {
 		int maxX_bool = Math.max(startPoint.getX(), endPoint.getX());
 		int maxY_bool = Math.max(startPoint.getY(), endPoint.getY());
 
-		return ((minX < maxX_bool) && (maxX > minX_bool) && (minY < maxY_bool) && (maxY > minY_bool));
+		return minX_bool < end.getX() && maxX_bool > start.getX() && minY_bool < end.getY() && maxY_bool > start.getY();
+//		rect1.x < rect2.x + rect2.w &&
+//				rect1.x + rect1.w > rect2.x &&
+//				rect1.y < rect2.y + rect2.h &&
+//				rect1.h + rect1.y > rect2.y
+
+		//return ((minX < maxX_bool) && (maxX > minX_bool) && (minY < maxY_bool) && (maxY > minY_bool));
 	}
 
 	@Override
@@ -222,7 +223,7 @@ public class Rectangle implements IShape {
 
 	@Override
 	public void selectOutline(Graphics2D g) {
-		ShapeOutlineProxy shapeOutlineProxy = new ShapeOutlineProxy(shapeParams,graphics2D);
+		ShapeOutlineProxy shapeOutlineProxy = new ShapeOutlineProxy(shapeParams,g);
 		shapeOutlineProxy.drawOutline();
 	}
 }
