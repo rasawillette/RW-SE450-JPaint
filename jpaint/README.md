@@ -57,7 +57,8 @@ Implementations:
 6. 4 Design Patterns
 
 Bugs:
-1. N/A
+1. Paste command removes the original shape and pastes it on the offset
+2. Select outline is wonky for rectangle and ellipse, works for triangle
 
 My 4 Design Patterns:
 1. **Command**
