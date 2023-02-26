@@ -79,14 +79,25 @@ public class ShapeParams {
         this.shadingType = shadingType;
     }
 
-    //boolean isSelected = false;
 
-//    public boolean getIsSelected() {
-//        return isSelected;
-//    }
+    // for pasting undo and redo
+    int x = 1;
 
-//    public void setIsSelected(boolean selected) {
-//        isSelected = selected;
-//    }
+    public void inclineX(){
+        x = x+1;
+    }
+
+    public void declineX(){
+        x = x-1;
+    }
+
+
+    public void pasteWithOffset(){
+        startPoint.setX(startPoint.getX()+(x*50));
+        startPoint.setY(startPoint.getY()+(x*50));
+        endPoint.setY(endPoint.getY()+(x*50));
+        endPoint.setX(endPoint.getX()+(x*50));
+        x = x+1;
+    }
 
 }

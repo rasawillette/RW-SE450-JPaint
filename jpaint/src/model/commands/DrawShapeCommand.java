@@ -17,6 +17,7 @@ public class DrawShapeCommand implements ICommand, IUndoable {
     ShapeList shapeList;
     ShapeType shape;
     PaintCanvas paintCanvas;
+    ShapeFactory shapeFactory;
 
     Point startPoint;
     Point endPoint;
@@ -29,6 +30,7 @@ public class DrawShapeCommand implements ICommand, IUndoable {
 
     @Override
     public void execute() {
+        shapeFactory = new ShapeFactory();
         newShape = ShapeFactory.getShape(shapeParams);
         CommandHistory.add(this);
         shapeList.addShape(newShape);

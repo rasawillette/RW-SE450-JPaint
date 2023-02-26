@@ -183,4 +183,9 @@ public class Ellipse implements IShape {
         ShapeOutlineProxy shapeOutlineProxy = new ShapeOutlineProxy(shapeParams,g);
         shapeOutlineProxy.drawOutline();
     }
+
+    @Override
+    public ShapeParams getShapeParams() {
+        return shapeParams;
+    }
 }

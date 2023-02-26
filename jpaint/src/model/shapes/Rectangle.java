@@ -226,5 +226,10 @@ public class Rectangle implements IShape {
 		ShapeOutlineProxy shapeOutlineProxy = new ShapeOutlineProxy(shapeParams,g);
 		shapeOutlineProxy.drawOutline();
 	}
+
+	@Override
+	public ShapeParams getShapeParams() {
+		return shapeParams;
+	}
 }
 

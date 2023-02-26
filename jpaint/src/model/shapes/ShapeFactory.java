@@ -8,7 +8,7 @@ public class ShapeFactory {
 
     ApplicationState applicationState;
     ShapeType shape;
-    private ShapeFactory(){};
+    public ShapeFactory(){};
 
     public static IShape getShape(ShapeParams shapeParams) {
 

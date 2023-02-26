@@ -10,19 +10,19 @@ public class DeleteCommand implements ICommand,IUndoable{
 
     ShapeList shapeList;
     PaintCanvas paintCanvas;
-    ArrayList<IShape> deleteList;
+    ArrayList<IShape> deletedList;
 
     public DeleteCommand(ShapeList shapeList, PaintCanvas paintCanvas) {
         this.shapeList = shapeList;
         this.paintCanvas = paintCanvas;
-        deleteList = new ArrayList<IShape>();
+        deletedList = new ArrayList<IShape>();
     }
 
     @Override
     public void execute() {
         for (IShape shape: shapeList.getSelectedList()){
             shapeList.removeShape(shape);
-            deleteList.add(shape);
+            deletedList.add(shape);
         }
         CommandHistory.add(this);
         paintCanvas.update();
@@ -30,7 +30,7 @@ public class DeleteCommand implements ICommand,IUndoable{
 
     @Override
     public void undo() {
-        for (IShape shape : deleteList){
+        for (IShape shape : deletedList){
             shapeList.addShape(shape);
         }
         paintCanvas.update();
@@ -38,7 +38,7 @@ public class DeleteCommand implements ICommand,IUndoable{
 
     @Override
     public void redo() {
-        for (IShape shape: deleteList){
+        for (IShape shape: deletedList){
             shapeList.removeShape(shape);
         }
         paintCanvas.update();

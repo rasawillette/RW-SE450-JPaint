@@ -1,10 +1,8 @@
 package model.interfaces;
 
 import model.persistence.ApplicationState;
+import model.shapes.*;
 import model.shapes.Point;
-import model.shapes.ShapeColor;
-import model.shapes.ShapeShadingType;
-import model.shapes.ShapeType;
 
 import java.awt.*;
 
@@ -43,4 +41,6 @@ public interface IShape {
     void updateMove(int deltaX, int deltaY);
 
     void selectOutline(Graphics2D g);
+
+    ShapeParams getShapeParams();
 }
