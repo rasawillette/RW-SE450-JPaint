@@ -8,7 +8,7 @@ Link to sprint 2 (450-sprint-2 branch): https://github.com/rasawillette/private-
 
 Link to sprint 2 Re-Submission (sprint-2-redo): https://github.com/rasawillette/private-RW-SE450/tree/sprint-2-redo
 
-Link to sprint 3 (450-sprint-3 branch): https://github.com/rasawillette/private-RW-SE450/tree/450-sprint-3
+Link to sprint 3 (sprint-3-submission branch): https://github.com/rasawillette/private-RW-SE450/tree/sprint-3-submission/jpaint
 
 ### 1/28 - Sprint 1
 
@@ -46,6 +46,8 @@ My 2 Design Patterns:
 
 ### 2/24 - Sprint 3
 
+Link to sprint 3 (sprint-3-submission branch): https://github.com/rasawillette/private-RW-SE450/tree/sprint-3-submission/jpaint
+
 Implementations:
 1. Copy
 2. Paste
@@ -55,12 +57,12 @@ Implementations:
 6. 4 Design Patterns
 
 Bugs:
-1.
+1. N/A
 
 My 4 Design Patterns:
 1. **Command**
-- Classes: UndoCommand, RedoCommand, DrawShapeCommand, SelectShapeCommand, MoveShapeCommand
-- Interfaces: ICommand (previously "IAtmCommand") & IUndoable
+- Classes: UndoCommand, RedoCommand, DrawShapeCommand, SelectShapeCommand, MoveShapeCommand, CopyCommand, DeleteCommand, PasteCommand
+- Interfaces: ICommand & IUndoable
 
 2. **State**
 - Classes: MouseHandler, DrawMouseState, SelectMouseState, MoveMouseState
