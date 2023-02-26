@@ -27,7 +27,7 @@ public class Main {
 
         paintCanvas.addState(applicationState);
         mouseHandler.addState(applicationState);
-        IJPaintController controller = new JPaintController(uiModule, applicationState);
+        IJPaintController controller = new JPaintController(uiModule, applicationState, shapeList, paintCanvas);
 
         controller.setup();
     }

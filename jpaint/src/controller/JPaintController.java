@@ -17,9 +17,11 @@ public class JPaintController implements IJPaintController {
     PaintCanvas paintCanvas;
 
     //constructor
-    public JPaintController(IUiModule uiModule, IApplicationState applicationState) {
+    public JPaintController(IUiModule uiModule, IApplicationState applicationState,ShapeList shapeList, PaintCanvas paintCanvas) {
         this.uiModule = uiModule;
         this.applicationState = applicationState;
+        this.shapeList = shapeList;
+        this.paintCanvas = paintCanvas;
     }
 
     @Override
