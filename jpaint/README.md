@@ -10,6 +10,8 @@ Link to sprint 2 Re-Submission (sprint-2-redo): https://github.com/rasawillette/
 
 Link to sprint 3 (sprint-3-submission branch): https://github.com/rasawillette/private-RW-SE450/tree/sprint-3-submission/jpaint
 
+Link to sprint 4 (sprint-4 branch): https://github.com/rasawillette/private-RW-SE450/tree/sprint-4/jpaint
+
 ### 1/28 - Sprint 1
 
 Implementations:
@@ -80,7 +82,7 @@ My 4 Design Patterns:
 
 ### 3/8 - Sprint 4
 
-Link to sprint 4 (sprint-4 branch): 
+Link to sprint 4 (sprint-4 branch): https://github.com/rasawillette/private-RW-SE450/tree/sprint-4/jpaint
 
 Implementations:
 1. Group
