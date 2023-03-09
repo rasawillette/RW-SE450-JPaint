@@ -110,7 +110,7 @@ My 5 Design Patterns:
 - Classes: ShapeOutline, ShapeOutlineProxy, RectangleOutline, TriangleOutline, EllipseOutline
 - Interfaces: IProxyOutline
 
-5. **add 5th here**
-- Classes:
-- Interfaces: 
+5. **Null Object**
+- Classes: NullShape
+- Interfaces: IShape
 
