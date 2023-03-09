@@ -76,3 +76,39 @@ My 4 Design Patterns:
 4. **Proxy**
 - Classes: ShapeOutline, ShapeOutlineProxy, RectangleOutline, TriangleOutline, EllipseOutline
 - Interfaces: IProxyOutline
+
+
+### 3/8 - Sprint 4
+
+Link to sprint 4 (sprint-4 branch): 
+
+Implementations:
+1. Group
+2. Ungroup
+5. Undo/Redo Group and Ungroup
+6. 5 Design Patterns
+
+Bugs:
+1. N/A
+
+My 5 Design Patterns:
+1. **Command**
+- Classes: UndoCommand, RedoCommand, DrawShapeCommand, SelectShapeCommand, MoveShapeCommand, CopyCommand, DeleteCommand, PasteCommand
+- Interfaces: ICommand & IUndoable
+
+2. **State**
+- Classes: MouseHandler, DrawMouseState, SelectMouseState, MoveMouseState
+- Interfaces: IMouseState
+
+3. **Strategy**
+- Classes: Rectangle, Ellipse, Triangle
+- Interfaces: IShape
+
+4. **Proxy**
+- Classes: ShapeOutline, ShapeOutlineProxy, RectangleOutline, TriangleOutline, EllipseOutline
+- Interfaces: IProxyOutline
+
+5. **add 5th here**
+- Classes:
+- Interfaces: 
+
