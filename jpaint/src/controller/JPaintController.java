@@ -7,6 +7,8 @@ import view.EventName;
 import view.gui.PaintCanvas;
 import view.interfaces.IUiModule;
 
+import javax.swing.*;
+
 
 public class JPaintController implements IJPaintController {
     //instance variables
@@ -46,5 +48,7 @@ public class JPaintController implements IJPaintController {
         uiModule.addEvent(EventName.PASTE, () -> new PasteCommand(shapeList, paintCanvas, applicationState).execute());
         uiModule.addEvent(EventName.DELETE, () -> new DeleteCommand(shapeList, paintCanvas).execute());
 
+        uiModule.addEvent(EventName.GROUP, () -> new GroupCommand(shapeList,paintCanvas));
+        uiModule.addEvent(EventName.UNGROUP, () -> new UngroupCommand(shapeList,paintCanvas));
     }
 }

@@ -1,10 +1,12 @@
 package model.interfaces;
 
+import model.commands.GroupCommand;
 import model.persistence.ApplicationState;
 import model.shapes.*;
 import model.shapes.Point;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public interface IShape {
     void draw(Graphics2D g);
@@ -43,4 +45,9 @@ public interface IShape {
     void selectOutline(Graphics2D g);
 
     ShapeParams getShapeParams();
+
+    void addGroupShape(GroupCommand groupCommand);
+
+    ArrayList<GroupCommand> getShapeGroup();
+    void removeGroupShape();
 }
