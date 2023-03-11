@@ -5,6 +5,7 @@ import model.shapes.ShapeList;
 import view.gui.PaintCanvas;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class UngroupCommand implements ICommand,IUndoable {
 
@@ -14,6 +15,8 @@ public class UngroupCommand implements ICommand,IUndoable {
     ArrayList<IShape> ungroupedList = new ArrayList<>();
 
     GroupCommand group;
+
+    HashMap<IShape,GroupCommand> dict;
 
     public UngroupCommand(ShapeList shapeList, PaintCanvas paintCanvas){
         this.paintCanvas = paintCanvas;
@@ -25,9 +28,11 @@ public class UngroupCommand implements ICommand,IUndoable {
         ungroupedList.clear();
         ungroupedList.addAll(shapeList.getSelectedList());
 
+        dict = new HashMap<IShape,GroupCommand>();
+
         for(IShape shape : ungroupedList){
             if(!shape.getShapeGroup().isEmpty()){
-                //dict.put(shape,shape.getShapeGroup().get(shape.getShapeGroup().size()-1));
+                dict.put(shape,shape.getShapeGroup().get(shape.getShapeGroup().size()-1));
             }
         }
 
