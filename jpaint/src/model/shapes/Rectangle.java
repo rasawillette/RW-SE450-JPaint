@@ -1,10 +1,12 @@
 package model.shapes;
 
+import model.commands.GroupCommand;
 import model.interfaces.IShape;
 import model.persistence.ApplicationState;
 import model.proxy.ShapeOutlineProxy;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Rectangle implements IShape {
 
@@ -231,5 +233,22 @@ public class Rectangle implements IShape {
 	public ShapeParams getShapeParams() {
 		return shapeParams;
 	}
+
+
+	ArrayList<GroupCommand> groupCommandArrayList = new ArrayList<>();
+
+	public void addGroupShape(GroupCommand groupCommand) {
+		groupCommandArrayList.add(groupCommand);
+	}
+
+	public ArrayList<GroupCommand> getShapeGroup() {
+		return groupCommandArrayList;
+	}
+
+	@Override
+	public void removeGroupShape() {
+		groupCommandArrayList.remove(groupCommandArrayList.size() -1);
+	}
+
 }
 
