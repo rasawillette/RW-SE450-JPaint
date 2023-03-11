@@ -26,7 +26,6 @@ public class GroupCommand implements ICommand, IUndoable{
         for(IShape shape: groupedList) {
             shape.addGroupShape(this);
         }
-
         CommandHistory.add(this);
         paintCanvas.update();
     }

@@ -48,7 +48,7 @@ public class UngroupCommand implements ICommand,IUndoable {
     @Override
     public void undo() {
         for(IShape shape : ungroupedList){
-            //shape.addGroupShape(dict.get(shape));
+            shape.addGroupShape(dict.get(shape));
             shapeList.addSelectedShape(shape);
         }
         paintCanvas.update();
