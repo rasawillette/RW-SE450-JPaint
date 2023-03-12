@@ -4,6 +4,7 @@ import model.commands.GroupCommand;
 import model.interfaces.IShape;
 import model.persistence.ApplicationState;
 import model.proxy.ShapeOutlineProxy;
+import model.shapes.SingletonColor;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -15,6 +16,11 @@ public class Rectangle implements IShape {
 	private Point endPoint;
 	ApplicationState applicationState;
 	Graphics2D graphics2d;
+
+	Color finalColorPrimary;
+	Color finalColorSecondary;
+	ShapeColor primaryColor;
+	ShapeColor secondaryColor;
 
 	int minX,minY,maxX,maxY;
 
@@ -32,6 +38,10 @@ public class Rectangle implements IShape {
 		getHeight();
 		shapeParams.setHeight(getHeight());
 		shapeParams.setWidth(getWidth());
+
+		// implement singleton color design pattern
+		this.finalColorPrimary = SingletonColor.getColor(primaryColor);
+		this.finalColorSecondary = SingletonColor.getColor(secondaryColor);
 	}
 
 

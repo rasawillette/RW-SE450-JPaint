@@ -17,6 +17,11 @@ public class Triangle implements IShape {
     ApplicationState applicationState;
     Graphics2D graphics2d;
 
+    Color finalColorPrimary;
+    Color finalColorSecondary;
+    ShapeColor primaryColor;
+    ShapeColor secondaryColor;
+
     int minX,minY,maxX,maxY;
 
     public Triangle(ShapeParams shapeParams) {
@@ -28,6 +33,10 @@ public class Triangle implements IShape {
         minY = Math.min(startPoint.getY(), endPoint.getY());
         maxX = Math.max(startPoint.getX(), endPoint.getX());
         maxY = Math.max(startPoint.getY(), endPoint.getY());
+
+        // implement singleton color design pattern
+        this.finalColorPrimary = SingletonColor.getColor(primaryColor);
+        this.finalColorSecondary = SingletonColor.getColor(secondaryColor);
     }
 
 
