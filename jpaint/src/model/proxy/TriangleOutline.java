@@ -15,8 +15,8 @@ public class TriangleOutline {
         graphics2D.setStroke(stroke);
         graphics2D.setColor(Color.BLACK);
 
-        int[] x = {shapeParams.startPoint.getX()-5, shapeParams.endPoint.getX()+5, shapeParams.startPoint.getX()-5};
-        int[] y = {shapeParams.startPoint.getY()-5, shapeParams.endPoint.getY()+5, shapeParams.endPoint.getY()+5};
+        int[] x = {shapeParams.startPoint.getX()-5, shapeParams.endPoint.getX()+15, shapeParams.startPoint.getX()-5};
+        int[] y = {shapeParams.startPoint.getY()-10, shapeParams.endPoint.getY()+5, shapeParams.endPoint.getY()+5};
 
         graphics2D.drawPolygon(x,y,3);
     }

@@ -91,9 +91,10 @@ Implementations:
 6. 5 Design Patterns
 
 Bugs:
-1. N/A
+1. ^ Has the same issues as in the last sprint submission
+2. Group/ungroup outline is wonky and doesn't show 
 
-My 5 Design Patterns (EC 6th): 
+My 5 Design Patterns:  
 1. **Command**
 - Classes: UndoCommand, RedoCommand, DrawShapeCommand, SelectShapeCommand, MoveShapeCommand, CopyCommand, DeleteCommand, PasteCommand
 - Interfaces: ICommand & IUndoable
@@ -114,6 +115,22 @@ My 5 Design Patterns (EC 6th):
 - Classes: SingletonColor
 - Interfaces: N/A
 
+### Extra Credit
+
+Ideas: 
+1. Adding additional polygon shapes based on user input with the number of  sides
+2. Implement a 6th Design Pattern 
+
+**Additional Polygon shapes:**
+- Classes: 
+- Interfaces: 
+- On the GUI: 
+
+Design Patterns cont.:
 6. **Null Object**
 - Classes: NullShape
 - Interfaces: IShape
+
+
+
+

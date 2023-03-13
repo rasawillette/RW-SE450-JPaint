@@ -7,6 +7,8 @@ import model.shapes.ShapeList;
 import model.shapes.ShapeParams;
 import view.gui.PaintCanvas;
 
+import java.util.ArrayList;
+
 public class SelectShapeCommand implements ICommand {
 
     ApplicationState applicationState;
@@ -37,9 +39,33 @@ public class SelectShapeCommand implements ICommand {
 
             if (shape.checkCoordinates(startPoint, endPoint)) {
                 shapeList.addSelectedShape(shape);
+
+                if(!shape.getShapeGroup().isEmpty()){
+                    groupSelectedShape(shapeList.getShapeList(),shape);
+                }
+
             }
             paintCanvas.update();
-            System.out.println("selected shape list : " + shapeList.getSelectedList());
+            //System.out.println("selected shape list : " + shapeList.getSelectedList());
+        }
+    }
+
+    private void groupSelectedShape(ArrayList<IShape> arrayList, IShape shape){
+        GroupCommand groupCommand = shape.getShapeGroup().get(shape.getShapeGroup().size()-1);
+
+        for(IShape shape1: arrayList){
+
+            if(!shape1.getShapeGroup().isEmpty()){
+                GroupCommand groupCommand1 = shape1.getShapeGroup().get(shape1.getShapeGroup().size()-1);
+
+                if(groupCommand1.equals(groupCommand)){
+
+                    if(!shapeList.getSelectedList().contains(shape1)){
+                        shapeList.addSelectedShape(shape1);
+                    }
+
+                }
+            }
         }
     }
 }

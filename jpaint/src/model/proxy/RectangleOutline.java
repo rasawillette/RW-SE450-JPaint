@@ -14,7 +14,7 @@ public class RectangleOutline {
         graphics2d.setStroke(stroke);
         graphics2d.setColor(Color.BLACK);
 
-        graphics2d.drawRect(shapeParams.startPoint.getX()-5 , shapeParams.startPoint.getY()-5,
+        graphics2d.drawRect(shapeParams.startPoint.getX()-5,shapeParams.startPoint.getY()-5,
                 shapeParams.getWidth()+10, shapeParams.getHeight() + 10);
     }
 }
