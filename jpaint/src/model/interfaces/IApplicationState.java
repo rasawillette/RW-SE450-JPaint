@@ -1,9 +1,6 @@
 package model.interfaces;
 
-import model.shapes.Point;
-import model.shapes.ShapeColor;
-import model.shapes.ShapeShadingType;
-import model.shapes.ShapeType;
+import model.shapes.*;
 import model.MouseMode;
 
 public interface IApplicationState {
@@ -31,4 +28,8 @@ public interface IApplicationState {
     void setStop(Point stop);
     Point getStart();
     Point getStop();
+
+    void setActiveExtraCredit();
+
+    ExtraCredit getActiveExtraCredit();
 }

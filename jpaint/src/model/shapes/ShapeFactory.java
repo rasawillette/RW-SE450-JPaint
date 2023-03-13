@@ -16,9 +16,10 @@ public class ShapeFactory {
         ShapeType shapeType = shapeParams.getShapeType();
         System.out.println("print shape type: " + shapeType);
 
-        if (shapeType == null) {
-            return null;
-        }
+        // Null Shape file handles this now
+//        if (shapeType == null) {
+//            return null;
+//        }
 
         if (shapeParams.getShapeType().equals(ShapeType.RECTANGLE)) {
             shape = new Rectangle(shapeParams);

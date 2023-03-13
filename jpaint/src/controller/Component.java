@@ -1,5 +1,6 @@
 package controller;
 
+import model.shapes.ExtraCredit;
 import model.shapes.ShapeColor;
 import model.shapes.ShapeShadingType;
 import model.shapes.ShapeType;
@@ -11,6 +12,7 @@ public class Component {
     static public ShapeColor activePrimaryColor;
     static public ShapeColor activeSecondaryColor;
     static public ShapeShadingType activeShapeShadingType;
+    static  public ExtraCredit activeExtraCredit;
 
     static public int startX;
     static public int startY;

@@ -1,11 +1,8 @@
 package model.persistence;
 
-import model.shapes.Point;
+import model.shapes.*;
 import controller.Component;
 import model.MouseMode;
-import model.shapes.ShapeColor;
-import model.shapes.ShapeShadingType;
-import model.shapes.ShapeType;
 import model.dialogs.DialogProvider;
 import model.interfaces.IApplicationState;
 import model.interfaces.IDialogProvider;
@@ -24,6 +21,8 @@ public class ApplicationState implements IApplicationState {
 
     private Point start;
     private Point stop;
+
+    private ExtraCredit activeExtraCredit;
 
     //constructor
     public ApplicationState(IUiModule uiModule) {
@@ -112,5 +111,16 @@ public class ApplicationState implements IApplicationState {
     @Override
     public Point getStop() {
         return stop;
+    }
+
+    @Override
+    public void setActiveExtraCredit() {
+        activeExtraCredit = uiModule.getDialogResponse(dialogProvider.getChooseExtraCredit());
+        Component.activeExtraCredit = activeExtraCredit;
+    }
+
+    @Override
+    public ExtraCredit getActiveExtraCredit() {
+        return activeExtraCredit;
     }
 }

@@ -38,5 +38,11 @@ public enum EventName {
 	DELETE,
 	GROUP,
 	UNGROUP,
-	EC;
+	EC {
+		@Override
+		public String toString() {
+			return "CHOOSE EC OPTION";
+		}
+	}
 }
+

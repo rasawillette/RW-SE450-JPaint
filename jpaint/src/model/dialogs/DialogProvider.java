@@ -1,5 +1,6 @@
 package model.dialogs;
 
+import model.shapes.ExtraCredit;
 import model.shapes.ShapeColor;
 import model.shapes.ShapeShadingType;
 import model.shapes.ShapeType;
@@ -14,6 +15,7 @@ public class DialogProvider implements IDialogProvider {
     private final IDialogChoice<ShapeColor> chooseSecondaryColorDialog;
     private final IDialogChoice<ShapeShadingType> chooseShadingTypeDialog;
     private final IDialogChoice<MouseMode> chooseStartAndEndPointModeDialog;
+    private final IDialogChoice<ExtraCredit> chooseExtraCredit;
     private final IApplicationState applicationState;
 
     public DialogProvider(IApplicationState applicationState) {
@@ -23,6 +25,7 @@ public class DialogProvider implements IDialogProvider {
         chooseSecondaryColorDialog = new ChooseSecondaryColorDialog(this.applicationState);
         chooseShadingTypeDialog = new ChooseShadingTypeDialog(this.applicationState);
         chooseStartAndEndPointModeDialog = new ChooseStartAndEndPointModeDialog(this.applicationState);
+        chooseExtraCredit = new ChooseExtraCreditDialog(this.applicationState);
     }
 
     @Override
@@ -48,5 +51,10 @@ public class DialogProvider implements IDialogProvider {
     @Override
     public IDialogChoice<MouseMode> getChooseStartAndEndPointModeDialog() {
         return chooseStartAndEndPointModeDialog;
+    }
+
+    @Override
+    public  IDialogChoice<ExtraCredit> getChooseExtraCredit() {
+        return chooseExtraCredit;
     }
 }

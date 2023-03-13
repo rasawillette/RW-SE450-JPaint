@@ -122,9 +122,9 @@ Ideas:
 2. Implement a 6th Design Pattern 
 
 **Additional Polygon shapes:**
-- Classes: 
-- Interfaces: 
-- On the GUI: 
+- Classes: ChooseExtraCreditDialog, ExtraCredit, ExtraCreditPolygon, ApplicationState, DialogProvider, PaintCanvas, EventName, Component, JPaintController
+- Interfaces: IApplicationState, IDialogProvider
+- On the GUI: Unable to get an EC button to show on the canvas menu bar, but other than that this works and will produce a 5-sided polygon (logic is based on drawing the triangle polygon). I didn't get around to including the 9 other additional number of polygon sides, this will only show a 5-sided polygon. 
 
 Design Patterns cont.:
 6. **Null Object**

@@ -1,6 +1,7 @@
 package model.interfaces;
 
 //import model.shapes.ExtraCredit;
+import model.shapes.ExtraCredit;
 import model.shapes.ShapeColor;
 import model.shapes.ShapeShadingType;
 import model.shapes.ShapeType;
@@ -18,5 +19,6 @@ public interface IDialogProvider {
     IDialogChoice<ShapeShadingType> getChooseShadingTypeDialog();
 
     IDialogChoice<MouseMode> getChooseStartAndEndPointModeDialog();
-    //IDialogChoice<ExtraCredit> getECoptionsDialog();
+
+    IDialogChoice<ExtraCredit> getChooseExtraCredit();
 }

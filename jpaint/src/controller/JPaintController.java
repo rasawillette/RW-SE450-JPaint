@@ -48,6 +48,6 @@ public class JPaintController implements IJPaintController {
         uiModule.addEvent(EventName.GROUP, () -> new GroupCommand(shapeList,paintCanvas));
         uiModule.addEvent(EventName.UNGROUP, () -> new UngroupCommand(shapeList,paintCanvas));
 
-        //uiModule.addEvent(EventName.EC, () -> new EC());
+        uiModule.addEvent(EventName.EC, () -> applicationState.setActiveExtraCredit());
     }
 }
