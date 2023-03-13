@@ -93,7 +93,7 @@ Implementations:
 Bugs:
 1. N/A
 
-My 5 Design Patterns:
+My 5 Design Patterns (EC 6th): 
 1. **Command**
 - Classes: UndoCommand, RedoCommand, DrawShapeCommand, SelectShapeCommand, MoveShapeCommand, CopyCommand, DeleteCommand, PasteCommand
 - Interfaces: ICommand & IUndoable
@@ -110,7 +110,10 @@ My 5 Design Patterns:
 - Classes: ShapeOutline, ShapeOutlineProxy, RectangleOutline, TriangleOutline, EllipseOutline
 - Interfaces: IProxyOutline
 
-5. **Null Object**
+5. **Singleton Color**
+- Classes: SingletonColor
+- Interfaces: N/A
+
+6. **Null Object**
 - Classes: NullShape
 - Interfaces: IShape
-
